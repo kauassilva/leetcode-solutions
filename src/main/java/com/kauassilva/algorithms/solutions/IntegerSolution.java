@@ -1,7 +1,7 @@
 package com.kauassilva.algorithms.solutions;
 
-import static com.kauassilva.algorithms.validators.IntegerSolutionValidator.validateScoreOfString;
-import static com.kauassilva.algorithms.validators.IntegerSolutionValidator.validateTheMaximumAchievableX;
+import static com.kauassilva.algorithms.validators.IntegerValidator.validateScoreOfString;
+import static com.kauassilva.algorithms.validators.IntegerValidator.validateTheMaximumAchievableX;
 
 public class IntegerSolution {
 

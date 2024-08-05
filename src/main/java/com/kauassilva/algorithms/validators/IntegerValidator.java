@@ -1,6 +1,6 @@
 package com.kauassilva.algorithms.validators;
 
-public class IntegerSolutionValidator {
+public class IntegerValidator {
 
     /**
      * <strong>Constraints:</strong>
