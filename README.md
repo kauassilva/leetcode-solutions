@@ -6,70 +6,56 @@ If you want to see the list of solved problems, click here: [Solved Problems](sr
 
 
 
-## Solution Classes
-
-I organize my solutions into classes based on the return type. For example:
-- `IntegerSolution`: Contains solutions where the return type is an integer.
-- `StringSolution`: Contains solutions where the return type is a string.
-
-
-
 ## Problems
 
 ### Description
-For each problem, I provided the same description as the original problem (excluding the images), and a link to the original LeetCode problem. Here's an example:
+For each problem, I provided the same description as the original problem (excluding the images), and a link to the original LeetCode problem. Besides that, all problems have a method to validate the constraints imposed in the problem description Here's an example:
 ````java
 /**
- * The <strong>score</strong> of a string is defined as the sum of the
- * absolute difference between the <strong>ASCII</strong> values of
- * adjacent characters.
  * <p>
- * <strong>Constraints:</strong>
+ * You are given a string {@code s}. The <b>score</b> of a string is
+ * defined as the sum of the absolute difference between the <b>ASCII</b>
+ * values of adjacent characters.
+ *
+ * <p>
+ * Return the <b>score</b>.
+ *
+ * <p>
+ * <b>Constraints:</b>
  * <ul>
  *     <li>{@code 2 <= s.length <= 100}</li>
  *     <li>{@code s} consists only of lowercase English letters.</li>
  * </ul>
  *
- * @param s a String
- * @return the <strong>score</strong> of {@code s}
  * @see <a href="https://leetcode.com/problems/score-of-a-string/">3110.
  * Score of a String</a>
  */
-public static int scoreOfString(String s) {
-    validateScoreOfString(s);
-    int score = 0;
+public class ScoreOfString {
 
-    for (int i=0; i<s.length()-1; i++) {
-        score += Math.abs(s.charAt(i) - s.charAt(i+1));
-    }
+   public static int scoreOfString(String s) {
+      validateScoreOfString(s);
+      int score = 0;
 
-    return score;
+      for (int i=0; i<s.length()-1; i++) {
+         score += Math.abs(s.charAt(i) - s.charAt(i+1));
+      }
+
+      return score;
+   }
+   
+   private static void validateScoreOfString(String s) {
+      if (s.length() < 2 || s.length() > 100) {
+         throw new IllegalArgumentException("Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".");
+      }
+      if (!s.matches("[a-z]+")) {
+         throw new IllegalArgumentException("'s' must consist of values from a to z only");
+      }
+   }
+
 }
 ````
 
-### Custom Constraint Validations
-All methods have a method to validate the constraints imposed in the problem description. For example:
-````java
-/**
- * <strong>Constraints:</strong>
- * <ul>
- *   <li>{@code 2 <= s.length <= 100}</li>
- *   <li>{@code s} consists only of lowercase English letters.</li>
- * </ul>
- *
- * @param s a String
- * @see <a href="https://leetcode.com/problems/score-of-a-string/">3110.
- * Score of a String</a>
- */
-public static void validateScoreOfString(String s) {
-    if (s.length() < 2 || s.length() > 100) {
-        throw new IllegalArgumentException("Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".");
-    }
-    if (!s.matches("[a-z]+")) {
-        throw new IllegalArgumentException("'s' must consist of values from a to z only");
-    }
-}
-````
+
 
 ### Tests
 I've included tests for each problem, as well as additional tests that I believe are relevant to the context and specific constraints. Por exemplo:
