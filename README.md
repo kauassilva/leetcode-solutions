@@ -2,6 +2,8 @@
 
 Welcome to my LeetCode Solutions repository. In this repository, I share my Java solutions for various LeetCode problems. Each solution is thoroughly tested, and I've included custom validation methods to handle problem-specific constraints.
 
+If you want to see the list of solved problems, click here: [Solved Problems](src/main/java/com/kauassilva/algorithms/algorithms.md)
+
 
 
 ## Solution Classes
@@ -48,7 +50,18 @@ public static int scoreOfString(String s) {
 ### Custom Constraint Validations
 All methods have a method to validate the constraints imposed in the problem description. For example:
 ````java
-private static void validateScoreOfString(String s) {
+/**
+ * <strong>Constraints:</strong>
+ * <ul>
+ *   <li>{@code 2 <= s.length <= 100}</li>
+ *   <li>{@code s} consists only of lowercase English letters.</li>
+ * </ul>
+ *
+ * @param s a String
+ * @see <a href="https://leetcode.com/problems/score-of-a-string/">3110.
+ * Score of a String</a>
+ */
+public static void validateScoreOfString(String s) {
     if (s.length() < 2 || s.length() > 100) {
         throw new IllegalArgumentException("Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".");
     }
@@ -93,9 +106,9 @@ void shouldThrowExceptionForShortString() {
 
 1. Clone the repository:
     ````bash
-    $ git clone git@github.com:kauassilva/leetcode-solutions.git
+    git clone git@github.com:kauassilva/leetcode-solutions.git
     ````
 2. Running Tests:
     ````bash
-    $ mvn test
+    mvn test
     ````

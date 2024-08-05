@@ -1,4 +1,4 @@
-package com.kauassilva.project;
+package com.kauassilva;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package com.kauassilva.project.algorithms;
+package com.kauassilva.algorithms.solutions;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
