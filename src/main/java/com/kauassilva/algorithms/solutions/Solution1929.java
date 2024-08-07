@@ -26,7 +26,7 @@ import java.util.Arrays;
  * @see <a href="https://leetcode.com/problems/concatenation-of-array/description/">
  *     1929. Concatenation of Array</a>
  */
-public class GetConcatenation {
+public class Solution1929 {
 
     public static int[] getConcatenation(int[] nums) {
         validateGetConcatenation(nums);

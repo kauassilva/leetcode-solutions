@@ -19,7 +19,7 @@ package com.kauassilva.algorithms.solutions;
  * @see <a href="https://leetcode.com/problems/score-of-a-string/">3110.
  * Score of a String</a>
  */
-public class ScoreOfString {
+public class Solution3110 {
 
     public static int scoreOfString(String s) {
         validateScoreOfString(s);

@@ -24,7 +24,7 @@ package com.kauassilva.algorithms.solutions;
  * @see <a href="https://leetcode.com/problems/find-the-maximum-achievable-number/description/">
  *     2769. Find the Maximum Achievable Number</a>
  */
-public class TheMaximumAchievableX {
+public class Solution2769 {
 
     public static int theMaximumAchievableX(int num, int t) {
         validateTheMaximumAchievableX(num, t);

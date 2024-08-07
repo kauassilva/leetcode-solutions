@@ -95,6 +95,11 @@ void shouldThrowExceptionForShortString() {
     git clone git@github.com:kauassilva/leetcode-solutions.git
     ````
 2. Running Tests:
-    ````bash
-    mvn test
-    ````
+   1. To run all tests classes:
+      ````bash
+      mvn test
+      ````
+   2. To run a single test class:
+      ````bash
+      mvn test -Dtest={the test class name without '.java'}
+      ````

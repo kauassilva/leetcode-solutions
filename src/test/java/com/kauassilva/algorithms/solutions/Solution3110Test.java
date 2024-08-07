@@ -25,14 +25,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @see <a href="https://leetcode.com/problems/score-of-a-string/">3110.
  * Score of a String</a>
  */
-class ScoreOfStringTest {
+class Solution3110Test {
 
     @Test
     @DisplayName("It should return the score of the string 'hello'")
     void shouldReturnScoreForHelloString() {
         String s = "hello";
 
-        int output = ScoreOfString.scoreOfString(s);
+        int output = Solution3110.scoreOfString(s);
         int expected = 13;
 
         assertEquals(expected, output);
@@ -43,7 +43,7 @@ class ScoreOfStringTest {
     void shouldReturnScoreForZazString() {
         String s = "zaz";
 
-        int output = ScoreOfString.scoreOfString(s);
+        int output = Solution3110.scoreOfString(s);
         int expected = 50;
 
         assertEquals(expected, output);
@@ -54,7 +54,7 @@ class ScoreOfStringTest {
     void shouldReturnScoreForShortString() {
         String s = "jx";
 
-        int output = ScoreOfString.scoreOfString(s);
+        int output = Solution3110.scoreOfString(s);
         int expected = 14;
 
         assertEquals(expected, output);
@@ -66,7 +66,7 @@ class ScoreOfStringTest {
         String s = "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyf" +
                 "jgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqy";
 
-        int output = ScoreOfString.scoreOfString(s);
+        int output = Solution3110.scoreOfString(s);
         int expected = 811;
 
         assertEquals(expected, output);
@@ -77,7 +77,7 @@ class ScoreOfStringTest {
     void shouldThrowExceptionForShortString() {
         String s = "x";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> ScoreOfString.scoreOfString(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution3110.scoreOfString(s));
 
         String expectedMessage = "Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".";
         String actualMessage = exception.getMessage();
@@ -91,7 +91,7 @@ class ScoreOfStringTest {
         String s = "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyf" +
                 "jgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyr";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> ScoreOfString.scoreOfString(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution3110.scoreOfString(s));
 
         String expectedMessage = "Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".";
         String actualMessage = exception.getMessage();
@@ -103,7 +103,7 @@ class ScoreOfStringTest {
     void shouldThrowExceptionForUppercaseCharacters() {
         String s = "azA";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> ScoreOfString.scoreOfString(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution3110.scoreOfString(s));
 
         String expectedMessage = "'s' must consist of values from a to z only";
         String actualMessage = exception.getMessage();

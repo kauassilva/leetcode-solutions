@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * @see <a href="https://leetcode.com/problems/find-the-maximum-achievable-number/description/">
  *     2769. Find the Maximum Achievable Number</a>
  */
-class TheMaximumAchievableXTest {
+class Solution2769Test {
 
     @Test
     @DisplayName("It should return the maximum achievable number for 'num=4' and 't=1'")
@@ -38,7 +38,7 @@ class TheMaximumAchievableXTest {
         int num = 4;
         int t = 1;
 
-        assertEquals(6, TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        assertEquals(6, Solution2769.theMaximumAchievableX(num, t));
     }
 
     @Test
@@ -47,7 +47,7 @@ class TheMaximumAchievableXTest {
         int num = 3;
         int t = 2;
 
-        assertEquals(7, TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        assertEquals(7, Solution2769.theMaximumAchievableX(num, t));
     }
 
     @Test
@@ -56,7 +56,7 @@ class TheMaximumAchievableXTest {
         int num = 1;
         int t = 1;
 
-        assertEquals(3, TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        assertEquals(3, Solution2769.theMaximumAchievableX(num, t));
     }
 
     @Test
@@ -65,7 +65,7 @@ class TheMaximumAchievableXTest {
         int num = 50;
         int t = 50;
 
-        assertEquals(150, TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        assertEquals(150, Solution2769.theMaximumAchievableX(num, t));
     }
 
     @Test
@@ -74,7 +74,7 @@ class TheMaximumAchievableXTest {
         int num = 0;
         int t = 1;
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution2769.theMaximumAchievableX(num, t));
 
         String expectedMessage = "expected 'num' to have value from 1 to 50 only";
         String actualMessage = exception.getMessage();
@@ -88,7 +88,7 @@ class TheMaximumAchievableXTest {
         int num = 51;
         int t = 1;
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution2769.theMaximumAchievableX(num, t));
 
         String expectedMessage = "expected 'num' to have value from 1 to 50 only";
         String actualMessage = exception.getMessage();
@@ -102,7 +102,7 @@ class TheMaximumAchievableXTest {
         int num = 1;
         int t = 0;
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution2769.theMaximumAchievableX(num, t));
 
         String expectedMessage = "expected 't' to have value from 1 to 50 only";
         String actualMessage = exception.getMessage();
@@ -116,7 +116,7 @@ class TheMaximumAchievableXTest {
         int num = 1;
         int t = 51;
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> TheMaximumAchievableX.theMaximumAchievableX(num, t));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution2769.theMaximumAchievableX(num, t));
 
         String expectedMessage = "expected 't' to have value from 1 to 50 only";
         String actualMessage = exception.getMessage();
