@@ -38,11 +38,13 @@ public class Solution2769 {
     }
 
     private static void validateTheMaximumAchievableX(int num, int t) {
+        validateNumValue(num, "expected 'num' to have value from 1 to 50 only");
+        validateNumValue(t, "expected 't' to have value from 1 to 50 only");
+    }
+
+    private static void validateNumValue(int num, String s) {
         if (num < 1 || num > 50) {
-            throw new IllegalArgumentException("expected 'num' to have value from 1 to 50 only");
-        }
-        if (t < 1 || t > 50) {
-            throw new IllegalArgumentException("expected 't' to have value from 1 to 50 only");
+            throw new IllegalArgumentException(s);
         }
     }
 
