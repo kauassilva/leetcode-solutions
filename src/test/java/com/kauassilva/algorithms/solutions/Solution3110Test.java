@@ -6,25 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-/**
- * <p>
- * You are given a string {@code s}. The <b>score</b> of a string is
- * defined as the sum of the absolute difference between the <b>ASCII</b>
- * values of adjacent characters.
- *
- * <p>
- * Return the <b>score</b>.
- *
- * <p>
- * <b>Constraints:</b>
- * <ul>
- *     <li>{@code 2 <= s.length <= 100}</li>
- *     <li>{@code s} consists only of lowercase English letters.</li>
- * </ul>
- *
- * @see <a href="https://leetcode.com/problems/score-of-a-string/">3110.
- * Score of a String</a>
- */
 class Solution3110Test {
 
     @Test

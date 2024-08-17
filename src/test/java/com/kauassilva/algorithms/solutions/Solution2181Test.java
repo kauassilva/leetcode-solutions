@@ -6,32 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * <p>
- * You are given the {@code head} of a linked list, which contains a series of
- * integers <b>separated</b> by {@code 0}'s. The <b>beginning</b> and <b>end
- * </b> of the linked list will have {@code Node.val == 0}.
- *
- * <p>
- * For <b>every</b> two consecutive {@code 0}'s, <b>merge</b> all the nodes
- * lying in between them into a single node whose value is the <b>sum</b> of
- * all the merged nodes. The modified list should not contain any {@code 0}'s.
- *
- * <p>
- * Return <i>the</i> {@code head} <i>of the modified linked list</i>.
- *
- * <p>
- * <b>Constraints:</b>
- * <ul>
- *     <li>The number of nodes in the list is in the range {@code [3, 2 * 10^5]}.</li>
- *     <li>{@code 0 <= Node.val <= 1000}</li>
- *     <li>There are <b>no</b> two consecutive nodes with {@code Node.val == 0}.</li>
- *     <li>The <b>beginning</b> and <b>end</b> of the linked list have {@code Node.val == 0}.</li>
- * </ul>
- *
- * @see <a href="https://leetcode.com/problems/merge-nodes-in-between-zeros/description/">
- *     2181. Merge Nodes in Between Zeros</a>
- */
 class Solution2181Test {
 
     @Test
