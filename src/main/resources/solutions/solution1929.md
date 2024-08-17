@@ -63,15 +63,15 @@ private static void validateInputValues(int[] nums) {
 How to run the tests:
 
 ````bash
-mvn test -Dtest=SolutionTest
+mvn test -Dtest=Solution1929Test
 ````
 
 Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution1929Test.java))
 
 | Nº | Description                                                                                   |
 |----|-----------------------------------------------------------------------------------------------|
-| 1  | It should return the array for the example 1                                                  |
-| 2  | It should return the array for the example 2                                                  |
+| 1  | It should return the concatenation for the example 1                                          |
+| 2  | It should return the concatenation for the example 2                                          |
 | 3  | It should return the concatenation to the minimum allowed size of 'nums'                      |
 | 4  | It should return the concatenation to the maximum allowed size of 'nums'                      |
 | 5  | It should throw an IllegalArgumentException when the allowed size of 'nums' is less than 1    |

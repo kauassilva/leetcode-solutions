@@ -27,13 +27,13 @@ If you want to see the list of solved problems, click here: [Solved Problems](sr
 
 Here is the list, in ascending order, of all the problems solved, validated, and tested.
 
-| ID   | Title                                                                                          | Difficulty |
-|------|------------------------------------------------------------------------------------------------|------------|
-| 1920 | [Build Array from Permutation](src/main/resources/solutions/solution1920.md)                   | Easy       |
-| 1929 | [Concatenation of Array](solutions/Solution1929.java)                                          | Easy       |
-| 2011 | [Final Value of Variable After Performing Operations](solutions/Solution2011.java)             | Easy       |
-| 2181 | [Merge Nodes in Between Zeros](solutions/Solution2181.java)                                    | Medium     |
-| 2469 | [Convert the Temperature](solutions/Solution2469.java)                                         | Easy       |
-| 2769 | [Find the Maximum Achievable Number](solutions/Solution2769.java)                              | Easy       |
-| 3110 | [Score of a String](solutions/Solution3110.java)                                               | Easy       |
-| 3190 | [Find Minimum Operations to Make All Elements Divisible by Three](solutions/Solution3190.java) | Easy       |
+| ID   | Title                                                                                                           | Difficulty |
+|------|-----------------------------------------------------------------------------------------------------------------|------------|
+| 1920 | [Build Array from Permutation](src/main/resources/solutions/solution1920.md)                                    | Easy       |
+| 1929 | [Concatenation of Array](src/main/resources/solutions/solution1929.md)                                          | Easy       |
+| 2011 | [Final Value of Variable After Performing Operations](src/main/resources/solutions/solution2011.md)             | Easy       |
+| 2181 | [Merge Nodes in Between Zeros](src/main/resources/solutions/solution2181.md)                                    | Medium     |
+| 2469 | [Convert the Temperature](src/main/resources/solutions/solution2469.md)                                         | Easy       |
+| 2769 | [Find the Maximum Achievable Number](src/main/resources/solutions/solution2769.md)                              | Easy       |
+| 3110 | [Score of a String](src/main/resources/solutions/solution3110.md)                                               | Easy       |
+| 3190 | [Find Minimum Operations to Make All Elements Divisible by Three](src/main/resources/solutions/solution3190.md) | Easy       |
