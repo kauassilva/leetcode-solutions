@@ -6,88 +6,6 @@ If you want to see the list of solved problems, click here: [Solved Problems](sr
 
 
 
-## Problems
-
-### Description
-For each problem, I provided the same description as the original problem (excluding the images), and a link to the original LeetCode problem. Besides that, all problems have a method to validate the constraints imposed in the problem description Here's an example:
-````java
-/**
- * <p>
- * You are given a string {@code s}. The <b>score</b> of a string is
- * defined as the sum of the absolute difference between the <b>ASCII</b>
- * values of adjacent characters.
- *
- * <p>
- * Return the <b>score</b>.
- *
- * <p>
- * <b>Constraints:</b>
- * <ul>
- *     <li>{@code 2 <= s.length <= 100}</li>
- *     <li>{@code s} consists only of lowercase English letters.</li>
- * </ul>
- *
- * @see <a href="https://leetcode.com/problems/score-of-a-string/">3110.
- * Score of a String</a>
- */
-public class ScoreOfString {
-
-   public static int scoreOfString(String s) {
-      validateScoreOfString(s);
-      int score = 0;
-
-      for (int i=0; i<s.length()-1; i++) {
-         score += Math.abs(s.charAt(i) - s.charAt(i+1));
-      }
-
-      return score;
-   }
-   
-   private static void validateScoreOfString(String s) {
-      if (s.length() < 2 || s.length() > 100) {
-         throw new IllegalArgumentException("Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".");
-      }
-      if (!s.matches("[a-z]+")) {
-         throw new IllegalArgumentException("'s' must consist of values from a to z only");
-      }
-   }
-
-}
-````
-
-
-
-### Tests
-I've included tests for each problem, as well as additional tests that I believe are relevant to the context and specific constraints. Por exemplo:
-````java
-@Test
-@DisplayName("It should return the score of the string 'hello'")
-void shouldReturnScoreForHelloString() {
-    String s = "hello";
-
-    int output = IntegerSolution.scoreOfString(s);
-    int expected = 13;
-
-    assertEquals(expected, output);
-}
-````
-````java
-@Test
-@DisplayName("It should throw an IllegalArgumentException when the length of the string is less than 2 characters")
-void shouldThrowExceptionForShortString() {
-    String s = "x";
-
-    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> IntegerSolution.scoreOfString(s));
-
-    String expectedMessage = "Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".";
-    String actualMessage = exception.getMessage();
-
-    assertEquals(expectedMessage, actualMessage);
-}
-````
-
-
-
 ## Getting Started
 
 1. Clone the repository:
@@ -103,3 +21,19 @@ void shouldThrowExceptionForShortString() {
       ````bash
       mvn test -Dtest={the test class name without '.java'}
       ````
+
+
+## Solved Problems
+
+Here is the list, in ascending order, of all the problems solved, validated, and tested.
+
+| ID   | Title                                                                                          | Difficulty |
+|------|------------------------------------------------------------------------------------------------|------------|
+| 1920 | [Build Array from Permutation](src/main/resources/solutions/solution1920.md)                   | Easy       |
+| 1929 | [Concatenation of Array](solutions/Solution1929.java)                                          | Easy       |
+| 2011 | [Final Value of Variable After Performing Operations](solutions/Solution2011.java)             | Easy       |
+| 2181 | [Merge Nodes in Between Zeros](solutions/Solution2181.java)                                    | Medium     |
+| 2469 | [Convert the Temperature](solutions/Solution2469.java)                                         | Easy       |
+| 2769 | [Find the Maximum Achievable Number](solutions/Solution2769.java)                              | Easy       |
+| 3110 | [Score of a String](solutions/Solution3110.java)                                               | Easy       |
+| 3190 | [Find Minimum Operations to Make All Elements Divisible by Three](solutions/Solution3190.java) | Easy       |
