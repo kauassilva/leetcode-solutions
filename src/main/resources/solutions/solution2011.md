@@ -70,7 +70,7 @@ How to run the tests:
 mvn test -Dtest=Solution2011Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/SolutionTest2011.java))
+Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution2011Test.java))
 
 | Nº | Description                                                                                            |
 |----|--------------------------------------------------------------------------------------------------------|
