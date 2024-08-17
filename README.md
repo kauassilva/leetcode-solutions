@@ -2,8 +2,6 @@
 
 Welcome to my LeetCode Solutions repository. In this repository, I share my Java solutions for various LeetCode problems. Each solution is thoroughly tested, and I've included custom validation methods to handle problem-specific constraints.
 
-If you want to see the list of solved problems, click here: [Solved Problems](src/main/java/com/kauassilva/algorithms/algorithms.md)
-
 
 
 ## Getting Started
