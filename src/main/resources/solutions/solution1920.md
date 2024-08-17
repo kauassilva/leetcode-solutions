@@ -11,7 +11,7 @@ A **zero-based permutation** `nums` is an array of **distinct** integers from `0
 
 **Follow-up:** Can you solve it without using an extra space (i.e., `O(1)` memory)?
 
-
+[Link to the LeetCode](https://leetcode.com/problems/build-array-from-permutation/description/)
 
 ## My Solution
 
