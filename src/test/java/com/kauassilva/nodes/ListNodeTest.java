@@ -22,8 +22,8 @@ class ListNodeTest {
 
         ListNode actual = ListNode.createListNode(values);
 
-        assertEquals(expected.val, actual.val);
-        assertNull(actual.next);
+        assertEquals(expected.getVal(), actual.getVal());
+        assertNull(actual.getNext());
     }
 
     @Test
@@ -34,13 +34,13 @@ class ListNodeTest {
 
         ListNode actual = ListNode.createListNode(values);
 
-        while (expected.next != null) {
-            assertEquals(expected.val, actual.val);
-            expected = expected.next;
-            actual = actual.next;
+        while (expected.getNext() != null) {
+            assertEquals(expected.getVal(), actual.getVal());
+            expected = expected.getNext();
+            actual = actual.getNext();
 
-            if (expected.next == null) {
-                assertNull(actual.next);
+            if (expected.getNext() == null) {
+                assertNull(actual.getNext());
             }
         }
     }

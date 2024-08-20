@@ -18,13 +18,13 @@ class Solution2181Test {
 
         ListNode actual = Solution2181.mergeNodes(head);
 
-        while (expected.next != null) {
-            assertEquals(expected.val, actual.val);
-            expected = expected.next;
-            actual = actual.next;
+        while (expected.getNext() != null) {
+            assertEquals(expected.getVal(), actual.getVal());
+            expected = expected.getNext();
+            actual = actual.getNext();
 
-            if (expected.next == null) {
-                assertNull(actual.next);
+            if (expected.getNext() == null) {
+                assertNull(actual.getNext());
             }
         }
     }
@@ -39,13 +39,13 @@ class Solution2181Test {
 
         ListNode actual = Solution2181.mergeNodes(head);
 
-        while (expected.next != null) {
-            assertEquals(expected.val, actual.val);
-            expected = expected.next;
-            actual = actual.next;
+        while (expected.getNext() != null) {
+            assertEquals(expected.getVal(), actual.getVal());
+            expected = expected.getNext();
+            actual = actual.getNext();
 
-            if (expected.next == null) {
-                assertNull(actual.next);
+            if (expected.getNext() == null) {
+                assertNull(actual.getNext());
             }
         }
     }
@@ -60,8 +60,8 @@ class Solution2181Test {
 
         ListNode actual = Solution2181.mergeNodes(head);
 
-        assertEquals(expected.val, actual.val);
-        assertNull(actual.next);
+        assertEquals(expected.getVal(), actual.getVal());
+        assertNull(actual.getNext());
     }
 
     @Test
@@ -86,13 +86,13 @@ class Solution2181Test {
         ListNode expected = ListNode.createListNode(expectedListNodeValues);
         ListNode actual = Solution2181.mergeNodes(head);
 
-        while (expected.next != null) {
-            assertEquals(expected.val, actual.val);
-            expected = expected.next;
-            actual = actual.next;
+        while (expected.getNext() != null) {
+            assertEquals(expected.getVal(), actual.getVal());
+            expected = expected.getNext();
+            actual = actual.getNext();
 
-            if (expected.next == null) {
-                assertNull(actual.next);
+            if (expected.getNext() == null) {
+                assertNull(actual.getNext());
             }
         }
     }
@@ -107,8 +107,8 @@ class Solution2181Test {
 
         ListNode actual = Solution2181.mergeNodes(head);
 
-        assertEquals(expected.val, actual.val);
-        assertNull(actual.next);
+        assertEquals(expected.getVal(), actual.getVal());
+        assertNull(actual.getNext());
     }
 
     @Test

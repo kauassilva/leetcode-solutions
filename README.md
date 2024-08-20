@@ -1,7 +1,11 @@
 # My LeetCode Solutions
 
-Welcome to my LeetCode Solutions repository. In this repository, I share my Java solutions for various LeetCode problems. Each solution is thoroughly tested, and I've included custom validation methods to handle problem-specific constraints.
+Welcome to my LeetCode Solutions repository. In this repository, I share my
+Java solutions for various LeetCode problems. Each solution is thoroughly
+tested, and I've included custom validation methods to handle problem-specific
+constraints.
 
+I've written some notes for myself, but if you'd like to read them too, [click here](src/main/resources/notes/notes.md).
 
 
 ## Getting Started

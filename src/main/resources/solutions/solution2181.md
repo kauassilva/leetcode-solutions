@@ -18,27 +18,31 @@ Return *the* `head` *of the modified linked list*.
 
 ## My Solution
 
+for my project, I've chosen to encapsulate the attributes of the `ListNode` class and use getters and setters to manipulate those attributes. Therefore, if you'd like to base your solution on mine, follow the approach outlined in the code comments.
+
+For further details, see [Public or private attributes for Node classes?](../notes/notes.md)
+
 ````java
 public static ListNode mergeNodes(ListNode head) {
     validateMergeNodes(head);
     ListNode result = new ListNode(0);
     ListNode current = result;
-    ListNode iterator = head.next;
+    ListNode iterator = head.getNext(); // head.next
     int sum = 0;
 
     while (iterator != null) {
-        if (iterator.val == 0) {
-            current.next = new ListNode(sum);
-            current = current.next;
+        if (iterator.getVal() == 0) { // iterator.val
+            current.setNext(new ListNode(sum)); // current.next = new ListNode(sum)
+            current = current.getNext(); // current.next
             sum = 0;
         } else {
-            sum += iterator.val;
+            sum += iterator.getVal(); // iterator.val
         }
 
-        iterator = iterator.next;
+        iterator = iterator.getNext(); // iterator.next
     }
 
-    return result.next;
+    return result.getNext(); // result.next
 }
 ````
 
@@ -62,7 +66,7 @@ private static void validateHeadLength(ListNode head) {
     ListNode current = head;
 
     while (current != null) {
-        current = current.next;
+        current = current.getNext(); // current.next
         count++;
     }
 
@@ -75,11 +79,11 @@ private static void validateNodeValues(ListNode head) {
     ListNode current = head;
 
     while (current != null) {
-        if (current.val < 0 || current.val > 1000) {
+        if (current.getVal() < 0 || current.getVal() > 1000) { // current.val
             throw new IllegalArgumentException("'head' must consist of values from 0 to 1000 only");
         }
 
-        current = current.next;
+        current = current.getNext(); // current.next
     }
 }
 
@@ -88,7 +92,7 @@ private static void validateConsecutiveZeros(ListNode head) {
     ListNode current = head;
 
     while (current != null) {
-        if (current.val == 0) {
+        if (current.getVal() == 0) { // current.val
             count++;
 
             if (count == 2) {
@@ -98,12 +102,12 @@ private static void validateConsecutiveZeros(ListNode head) {
             count = 0;
         }
 
-        current = current.next;
+        current = current.getNext(); // current.next
     }
 }
 
 private static void validateFirstNode(ListNode head) {
-    if (head.val != 0) {
+    if (head.getVal() != 0) { // head.val
         throw new IllegalArgumentException("First node should be 0");
     }
 }
@@ -111,10 +115,10 @@ private static void validateFirstNode(ListNode head) {
 private static void validateLastNode(ListNode head) {
     ListNode last = head;
     while (last != null) {
-        if (last.next == null && last.val != 0) {
+        if (last.getNext() == null && last.getVal() != 0) { // last.next && last.val
             throw new IllegalArgumentException("Last node should be 0");
         }
-        last = last.next;
+        last = last.getNext(); // last.next
     }
 }
 ````

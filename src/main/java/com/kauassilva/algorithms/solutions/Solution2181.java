@@ -8,22 +8,22 @@ public class Solution2181 {
         validateMergeNodes(head);
         ListNode result = new ListNode(0);
         ListNode current = result;
-        ListNode iterator = head.next;
+        ListNode iterator = head.getNext();
         int sum = 0;
 
         while (iterator != null) {
-            if (iterator.val == 0) {
-                current.next = new ListNode(sum);
-                current = current.next;
+            if (iterator.getVal() == 0) {
+                current.setNext(new ListNode(sum));
+                current = current.getNext();
                 sum = 0;
             } else {
-                sum += iterator.val;
+                sum += iterator.getVal();
             }
 
-            iterator = iterator.next;
+            iterator = iterator.getNext();
         }
 
-        return result.next;
+        return result.getNext();
     }
 
     private static void validateMergeNodes(ListNode head) {
@@ -39,7 +39,7 @@ public class Solution2181 {
         ListNode current = head;
 
         while (current != null) {
-            current = current.next;
+            current = current.getNext(); // current.next
             count++;
         }
 
@@ -52,11 +52,11 @@ public class Solution2181 {
         ListNode current = head;
 
         while (current != null) {
-            if (current.val < 0 || current.val > 1000) {
+            if (current.getVal() < 0 || current.getVal() > 1000) { // current.val
                 throw new IllegalArgumentException("'head' must consist of values from 0 to 1000 only");
             }
 
-            current = current.next;
+            current = current.getNext(); // current.next
         }
     }
 
@@ -65,7 +65,7 @@ public class Solution2181 {
         ListNode current = head;
 
         while (current != null) {
-            if (current.val == 0) {
+            if (current.getVal() == 0) { // current.val
                 count++;
 
                 if (count == 2) {
@@ -75,12 +75,12 @@ public class Solution2181 {
                 count = 0;
             }
 
-            current = current.next;
+            current = current.getNext(); // current.next
         }
     }
 
     private static void validateFirstNode(ListNode head) {
-        if (head.val != 0) {
+        if (head.getVal() != 0) { // head.val
             throw new IllegalArgumentException("First node should be 0");
         }
     }
@@ -88,10 +88,10 @@ public class Solution2181 {
     private static void validateLastNode(ListNode head) {
         ListNode last = head;
         while (last != null) {
-            if (last.next == null && last.val != 0) {
+            if (last.getNext() == null && last.getVal() != 0) { // last.next && last.val
                 throw new IllegalArgumentException("Last node should be 0");
             }
-            last = last.next;
+            last = last.getNext(); // last.next
         }
     }
 
