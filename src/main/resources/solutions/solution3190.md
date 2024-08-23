@@ -70,15 +70,17 @@ How to run the tests:
 mvn test -Dtest=Solution3190Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution3190Test.java))
+#### Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution3190Test.java))
 
-| Nº | Description                                                                                       |
-|----|---------------------------------------------------------------------------------------------------|
-| 1  | It should return the minimum number of operations for example 1                                   |
-| 2  | It should return the minimum number of operations for example 2                                   |
-| 3  | It should return the minimum number of operations for the minimum array length and value allowed  |
-| 4  | It should return the minimum number of operations for the maximum array length and values allowed |
-| 5  | It should throw IllegalArgumentException when the input array length is less than allowed         |
-| 6  | It should throw IllegalArgumentException when the input array length is greater than allowed      |
-| 7  | It should throw IllegalArgumentException when the array value is less than allowed                |
-| 8  | It should throw IllegalArgumentException when the array value is greater than allowed             |
+- **It should return the minimum number of operations correctly for**
+  - 1 : [1, 2, 3, 4]
+  - 2 : [3, 6, 9]
+  - 3 : the minimum array length and value allowed (1)
+  - 4 : the maximum array length and values allowed (50) 
+  
+
+- **It should throw IllegalArgumentException when**
+  - 1 : the array length is less than allowed (0)
+  - 2 : the array length is greater than allowed (51)
+  - 3 : the array value is less than allowed (0)
+  - 4 : the array value is greater than allowed (51)

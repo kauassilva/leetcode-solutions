@@ -10,12 +10,10 @@ I can improve, please point them out and explain why my approach is
 incorrect...
 
 
-## Notes covered
+## Topics covered
 
-| ID | Note                                           |
-|----|------------------------------------------------|
-| 1  | Public or private attributes for Node classes? |
-| 2  | Why I used `Logger` instead of `System.out`    |
+1. Public or private attributes for Node classes?
+2. Why I used `Logger` instead of `System.out`
 
 
 ### 1 - Public or private attributes for Node classes?
