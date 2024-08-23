@@ -2,12 +2,16 @@ package com.kauassilva.algorithms.solutions;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Named.named;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class Solution3110Test {
 
@@ -18,89 +22,41 @@ class Solution3110Test {
         solution = new Solution3110();
     }
 
-
-    @Test
-    @DisplayName("It should return the score of the string 'hello'")
-    void shouldReturnScoreForHelloString() {
-        String s = "hello";
-
-        int output = solution.scoreOfString(s);
-        int expected = 13;
-
-        assertEquals(expected, output);
+    @DisplayName("It should return the score of the string correctly")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForCorrectReturns")
+    void shouldReturnScoreForHelloString(String s, int expectedInteger) {
+        assertEquals(expectedInteger, solution.scoreOfString(s));
     }
 
-    @Test
-    @DisplayName("It should return the score of the string 'zaz'")
-    void shouldReturnScoreForZazString() {
-        String s = "zaz";
+    @DisplayName("It should throw IllegalArgumentException when")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForExceptions")
+    void shouldThrowExceptionForShortString(String s, String expectedMessage) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> solution.scoreOfString(s));
 
-        int output = solution.scoreOfString(s);
-        int expected = 50;
-
-        assertEquals(expected, output);
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
-    @Test
-    @DisplayName("It should return the score of the string with 2 characters")
-    void shouldReturnScoreForShortString() {
-        String s = "jx";
-
-        int output = solution.scoreOfString(s);
-        int expected = 14;
-
-        assertEquals(expected, output);
+    public static Stream<Arguments> testDataForCorrectReturns() {
+        return Stream.of(
+                arguments("hello", 13),
+                arguments("zaz", 50),
+                arguments(named("with 2 characters", "jx"), 14),
+                arguments(named("with 100 characters", "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqy"), 811)
+        );
     }
 
-    @Test
-    @DisplayName("It should return the score of the string with 100 characters")
-    void shouldReturnScoreForLongString() {
-        String s = "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyf" +
-                "jgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqy";
-
-        int output = solution.scoreOfString(s);
-        int expected = 811;
-
-        assertEquals(expected, output);
-    }
-
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the length of the string is less than 2 characters")
-    void shouldThrowExceptionForShortString() {
-        String s = "x";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.scoreOfString(s));
-
-        String expectedMessage = "Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the length of the string is greater than 100 characters")
-    void shouldThrowExceptionForLongString() {
-        String s = "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyf" +
-                "jgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyr";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.scoreOfString(s));
-
-        String expectedMessage = "Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the string contains an uppercase character")
-    void shouldThrowExceptionForUppercaseCharacters() {
-        String s = "azA";
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.scoreOfString(s));
-
-        String expectedMessage = "'s' must consist of values from a to z only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+    public static Stream<Arguments> testDataForExceptions() {
+        return Stream.of(
+            arguments(named("the length of the string is less than 2 characters (1)", "x"),
+                    "Expected 's' to have 2 <= size >= 100 but got 1."),
+            arguments(named("the length of the string is greater than 100 characters (101)", "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyr"),
+                    "Expected 's' to have 2 <= size >= 100 but got 101."),
+            arguments(named("the string contains an uppercase character", "azA"),
+                    "'s' must consist of values from a to z only")
+        );
     }
 
 }

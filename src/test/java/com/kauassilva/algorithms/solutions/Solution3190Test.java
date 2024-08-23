@@ -25,12 +25,22 @@ class Solution3190Test {
 
     @DisplayName("It should return the minimum number of operations correctly")
     @ParameterizedTest(name = "{index} : for {0}")
-    @MethodSource("numsAndExpectedIntegers")
+    @MethodSource("testDataForCorrectReturns")
     void shouldReturnTheMinimumNumberOfOperationsForExample1(int[] nums, int expectedInteger) {
         assertEquals(expectedInteger, solution.minimumOperations(nums));
     }
 
-    public static Stream<Arguments> numsAndExpectedIntegers() {
+    @DisplayName("It should throw IllegalArgumentException when")
+    @ParameterizedTest(name = "{index} : the array {0}")
+    @MethodSource("testDataForExceptions")
+    void shouldThrowExceptionForArrayLengthLessThanAllowed(int[] nums, String expectedMessage) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> solution.minimumOperations(nums));
+
+        assertEquals(expectedMessage, exception.getMessage());
+    }
+
+    public static Stream<Arguments> testDataForCorrectReturns() {
         int[] nums = new int[50];
         Arrays.fill(nums, 50);
 
@@ -42,22 +52,16 @@ class Solution3190Test {
         );
     }
 
-    @DisplayName("It should throw IllegalArgumentException when")
-    @ParameterizedTest(name = "{index} : the array {0}")
-    @MethodSource("numsAndExpectedMessage")
-    void shouldThrowExceptionForArrayLengthLessThanAllowed(int[] nums, String expectedMessage) {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> solution.minimumOperations(nums));
-
-        assertEquals(expectedMessage, exception.getMessage());
-    }
-
-    public static Stream<Arguments> numsAndExpectedMessage() {
+    public static Stream<Arguments> testDataForExceptions() {
         return Stream.of(
-                arguments(named("length is less than allowed (0)", new int[0]), "expected 'nums' to have 1 <= size <= 50 but got 0"),
-                arguments(named("length is greater than allowed (51)", new int[51]), "expected 'nums' to have 1 <= size <= 50 but got 51"),
-                arguments(named("value is less than allowed (0)", new int[] {0}), "'nums' must consist of values from 1 to 50 only"),
-                arguments(named("value is greater than allowed (51)", new int[] {51}), "'nums' must consist of values from 1 to 50 only")
+                arguments(named("length is less than allowed (0)", new int[0]),
+                        "expected 'nums' to have 1 <= size <= 50 but got 0"),
+                arguments(named("length is greater than allowed (51)", new int[51]),
+                        "expected 'nums' to have 1 <= size <= 50 but got 51"),
+                arguments(named("value is less than allowed (0)", new int[] {0}),
+                        "'nums' must consist of values from 1 to 50 only"),
+                arguments(named("value is greater than allowed (51)", new int[] {51}),
+                        "'nums' must consist of values from 1 to 50 only")
         );
     }
 
