@@ -20,7 +20,7 @@ You should convert Celsius into **Kelvin** and **Fahrenheit** and return it as a
 ## My Solution
 
 ````java
-public static double[] convertTemperature(double celsius) {
+public double[] convertTemperature(double celsius) {
     validateConvertTemperature(celsius);
 
     double kelvin = celsius + 273.15;
@@ -37,7 +37,7 @@ public static double[] convertTemperature(double celsius) {
 ## Method Validation
 
 ````java
-private static void validateConvertTemperature(double celsius) {
+private void validateConvertTemperature(double celsius) {
         if (celsius < 0 || celsius > 1000) {
             throw new IllegalArgumentException("expected 'celsius' to have value from 0 to 1000 only");
         }

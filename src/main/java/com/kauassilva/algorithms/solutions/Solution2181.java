@@ -4,7 +4,7 @@ import com.kauassilva.nodes.ListNode;
 
 public class Solution2181 {
 
-    public static ListNode mergeNodes(ListNode head) {
+    public ListNode mergeNodes(ListNode head) {
         validateMergeNodes(head);
         ListNode result = new ListNode(0);
         ListNode current = result;
@@ -26,7 +26,7 @@ public class Solution2181 {
         return result.getNext();
     }
 
-    private static void validateMergeNodes(ListNode head) {
+    private void validateMergeNodes(ListNode head) {
         validateHeadLength(head);
         validateNodeValues(head);
         validateConsecutiveZeros(head);
@@ -34,7 +34,7 @@ public class Solution2181 {
         validateLastNode(head);
     }
 
-    private static void validateHeadLength(ListNode head) {
+    private void validateHeadLength(ListNode head) {
         int count = 0;
         ListNode current = head;
 
@@ -48,7 +48,7 @@ public class Solution2181 {
         }
     }
 
-    private static void validateNodeValues(ListNode head) {
+    private void validateNodeValues(ListNode head) {
         ListNode current = head;
 
         while (current != null) {
@@ -60,7 +60,7 @@ public class Solution2181 {
         }
     }
 
-    private static void validateConsecutiveZeros(ListNode head) {
+    private void validateConsecutiveZeros(ListNode head) {
         int count = 0;
         ListNode current = head;
 
@@ -79,13 +79,13 @@ public class Solution2181 {
         }
     }
 
-    private static void validateFirstNode(ListNode head) {
+    private void validateFirstNode(ListNode head) {
         if (head.getVal() != 0) { // head.val
             throw new IllegalArgumentException("First node should be 0");
         }
     }
 
-    private static void validateLastNode(ListNode head) {
+    private void validateLastNode(ListNode head) {
         ListNode last = head;
         while (last != null) {
             if (last.getNext() == null && last.getVal() != 0) { // last.next && last.val

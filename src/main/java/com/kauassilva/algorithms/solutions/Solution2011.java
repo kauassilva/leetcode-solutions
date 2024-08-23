@@ -32,7 +32,7 @@ package com.kauassilva.algorithms.solutions;
  */
 public class Solution2011 {
 
-    public static int finalValueAfterOperations(String[] operations) {
+    public int finalValueAfterOperations(String[] operations) {
         validateFinalValueAfterOperations(operations);
 
         int x = 0;
@@ -44,18 +44,18 @@ public class Solution2011 {
         return x;
     }
 
-    private static void validateFinalValueAfterOperations(String[] operations) {
+    private void validateFinalValueAfterOperations(String[] operations) {
         validateInputLength(operations);
         validateInputValues(operations);
     }
 
-    private static void validateInputLength(String[] operations) {
+    private void validateInputLength(String[] operations) {
         if (operations.length < 1 || operations.length > 100) {
             throw new IllegalArgumentException("expected 'operations' to have 1 <= size <= 100 but got " + operations.length);
         }
     }
 
-    private static void validateInputValues(String[] operations) {
+    private void validateInputValues(String[] operations) {
         for (String operation : operations) {
             if (!(operation.equals("X++") || operation.equals("++X") || operation.equals("X--") || operation.equals("--X"))) {
                 throw new IllegalArgumentException("'operations' must consist of values in ['X++', 'X--', '++X', '--X'] only");

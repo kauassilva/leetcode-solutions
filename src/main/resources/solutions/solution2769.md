@@ -15,7 +15,7 @@ Return the **maximum achievable number** after applying the operation at most `t
 ## My Solution
 
 ````java
-public static int theMaximumAchievableX(int num, int t) {
+public int theMaximumAchievableX(int num, int t) {
     validateTheMaximumAchievableX(num, t);
     int maximumAchievable = num;
 
@@ -34,12 +34,12 @@ public static int theMaximumAchievableX(int num, int t) {
 ## Method Validation
 
 ````java
-private static void validateTheMaximumAchievableX(int num, int t) {
+private void validateTheMaximumAchievableX(int num, int t) {
     validateNumValue(num, "expected 'num' to have value from 1 to 50 only");
     validateNumValue(t, "expected 't' to have value from 1 to 50 only");
 }
 
-private static void validateNumValue(int num, String s) {
+private void validateNumValue(int num, String s) {
     if (num < 1 || num > 50) {
         throw new IllegalArgumentException(s);
     }

@@ -1,5 +1,6 @@
 package com.kauassilva.algorithms.solutions;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,13 +8,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Solution1920Test {
 
+    private static Solution1920 solution;
+
+    @BeforeAll
+    static void beforeAll() {
+        solution = new Solution1920();
+    }
+
     @Test
     @DisplayName("It should return the array for the example 1")
     void shouldReturnArrayForExample1() {
         int[] nums = {0, 2, 1, 5, 3, 4};
         int[] expected = {0, 1, 2, 4, 5, 3};
 
-        int[] actual = Solution1920.buildArray(nums);
+        int[] actual = solution.buildArray(nums);
 
         assertArrayEquals(expected, actual);
     }
@@ -24,7 +32,7 @@ class Solution1920Test {
         int[] nums = {5, 0, 1, 2, 3, 4};
         int[] expected = {4, 5, 0, 1, 2, 3};
 
-        int[] actual = Solution1920.buildArray(nums);
+        int[] actual = solution.buildArray(nums);
 
         assertArrayEquals(expected, actual);
     }
@@ -35,7 +43,7 @@ class Solution1920Test {
         int[] nums = {0};
         int[] expected = {0};
 
-        int[] actual = Solution1920.buildArray(nums);
+        int[] actual = solution.buildArray(nums);
 
         assertArrayEquals(expected, actual);
     }
@@ -49,7 +57,7 @@ class Solution1920Test {
             nums[i] = i;
         }
 
-        int[] actual = Solution1920.buildArray(nums);
+        int[] actual = solution.buildArray(nums);
 
         for (int i = 0; i < nums.length; i++) {
             assertEquals(nums[nums[i]], actual[i]);
@@ -60,7 +68,7 @@ class Solution1920Test {
     @DisplayName("It should throw an IllegalArgumentException when the input array is null")
     void shouldThrowExceptionForNullArray() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution1920.buildArray(null));
+                () -> solution.buildArray(null));
 
         String expectedMessage = "'nums' cannot be null";
         String actualMessage = exception.getMessage();
@@ -74,7 +82,7 @@ class Solution1920Test {
         int[] nums = new int[0];
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution1920.buildArray(nums));
+                () -> solution.buildArray(nums));
 
         String expectedMessage = "expected 'nums' to have 1 <= size <= 1000 but got " + nums.length;
         String actualMessage = exception.getMessage();
@@ -88,7 +96,7 @@ class Solution1920Test {
         int[] nums = new int[1001];
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution1920.buildArray(nums));
+                () -> solution.buildArray(nums));
 
         String expectedMessage = "expected 'nums' to have 1 <= size <= 1000 but got " + nums.length;
         String actualMessage = exception.getMessage();
@@ -102,7 +110,7 @@ class Solution1920Test {
         int[] nums = {0, -1, 1, 2, 3, 4};
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution1920.buildArray(nums));
+                () -> solution.buildArray(nums));
 
         String expectedMessage = "'nums' must consist of values from 0 to " + (nums.length - 1) + " only";
         String actualMessage = exception.getMessage();
@@ -115,7 +123,7 @@ class Solution1920Test {
     void shouldThrowExceptionForMaxValueGreaterThanArrayLengthMinusOne() {
         int[] nums = {0, 1, 3, 1001};
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution1920.buildArray(nums));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.buildArray(nums));
 
         String expectedMessage = "'nums' must consist of values from 0 to " + (nums.length - 1) + " only";
         String actualMessage = exception.getMessage();
@@ -129,7 +137,7 @@ class Solution1920Test {
         int[] nums = {0, 2, 1, 5, 3, 4, 2};
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution1920.buildArray(nums));
+                () -> solution.buildArray(nums));
 
         String expectedMessage = "'nums' must consist of distinct values only";
         String actualMessage = exception.getMessage();

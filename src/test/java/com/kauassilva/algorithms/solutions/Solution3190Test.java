@@ -1,5 +1,6 @@
 package com.kauassilva.algorithms.solutions;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,13 +9,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class Solution3190Test {
 
+    private static Solution3190 solution;
+
+    @BeforeAll
+    static void beforeAll() {
+        solution = new Solution3190();
+    }
+
     @Test
     @DisplayName("It should return the minimum number of operations for example 1")
     void shouldReturnTheMinimumNumberOfOperationsForExample1() {
         int[] nums = {1, 2, 3, 4};
         int expected = 3;
 
-        int actual = Solution3190.minimumOperations(nums);
+        int actual = solution.minimumOperations(nums);
 
         assertEquals(expected, actual);
     }
@@ -25,7 +33,7 @@ class Solution3190Test {
         int[] nums = {3, 6, 9};
         int expected = 0;
 
-        int actual = Solution3190.minimumOperations(nums);
+        int actual = solution.minimumOperations(nums);
 
         assertEquals(expected, actual);
     }
@@ -36,7 +44,7 @@ class Solution3190Test {
         int[] nums = {1};
         int expected = 1;
 
-        int actual = Solution3190.minimumOperations(nums);
+        int actual = solution.minimumOperations(nums);
 
         assertEquals(expected, actual);
     }
@@ -53,7 +61,7 @@ class Solution3190Test {
 
         int expected = 34;
 
-        int actual = Solution3190.minimumOperations(nums);
+        int actual = solution.minimumOperations(nums);
 
         assertEquals(expected, actual);
     }
@@ -64,7 +72,7 @@ class Solution3190Test {
         int[] nums = {};
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution3190.minimumOperations(nums));
+                () -> solution.minimumOperations(nums));
 
         String expectedMessage = "expected 'nums' to have 1 <= size <= 50 but got 0";
         String actualMessage = exception.getMessage();
@@ -78,7 +86,7 @@ class Solution3190Test {
         int[] nums = new int[51];
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution3190.minimumOperations(nums));
+                () -> solution.minimumOperations(nums));
 
         String expectedMessage = "expected 'nums' to have 1 <= size <= 50 but got 51";
         String actualMessage = exception.getMessage();
@@ -92,7 +100,7 @@ class Solution3190Test {
         int[] nums = {0};
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution3190.minimumOperations(nums));
+                () -> solution.minimumOperations(nums));
 
         String expectedMessage = "'nums' must consist of values from 1 to 50 only";
         String actualMessage = exception.getMessage();
@@ -106,7 +114,7 @@ class Solution3190Test {
         int[] nums = {51};
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution3190.minimumOperations(nums));
+                () -> solution.minimumOperations(nums));
 
         String expectedMessage = "'nums' must consist of values from 1 to 50 only";
         String actualMessage = exception.getMessage();
