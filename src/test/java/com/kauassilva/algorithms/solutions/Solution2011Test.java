@@ -1,5 +1,6 @@
 package com.kauassilva.algorithms.solutions;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -39,13 +40,20 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class Solution2011Test {
 
+    private static Solution2011 solution;
+
+    @BeforeAll
+    static void beforeAll() {
+        solution = new Solution2011();
+    }
+
     @Test
     @DisplayName("It should return the correct value for the example 1")
     void shouldReturnTheCorrectValueForExample1() {
         String[] operations = {"--X", "X++", "X++"};
         int expected = 1;
 
-        int actual = Solution2011.finalValueAfterOperations(operations);
+        int actual = solution.finalValueAfterOperations(operations);
 
         assertEquals(expected, actual);
     }
@@ -56,7 +64,7 @@ class Solution2011Test {
         String[] operations = {"++X", "++X", "X++"};
         int expected = 3;
 
-        int actual = Solution2011.finalValueAfterOperations(operations);
+        int actual = solution.finalValueAfterOperations(operations);
 
         assertEquals(expected, actual);
     }
@@ -67,7 +75,7 @@ class Solution2011Test {
         String[] operations = {"X++", "++X", "--X", "X--"};
         int expected = 0;
 
-        int actual = Solution2011.finalValueAfterOperations(operations);
+        int actual = solution.finalValueAfterOperations(operations);
 
         assertEquals(expected, actual);
     }
@@ -78,7 +86,7 @@ class Solution2011Test {
         String[] operations = {"++X"};
         int expected = 1;
 
-        int actual = Solution2011.finalValueAfterOperations(operations);
+        int actual = solution.finalValueAfterOperations(operations);
 
         assertEquals(expected, actual);
     }
@@ -92,7 +100,7 @@ class Solution2011Test {
 
         Arrays.fill(operations, operation);
 
-        int actual = Solution2011.finalValueAfterOperations(operations);
+        int actual = solution.finalValueAfterOperations(operations);
 
         assertEquals(expected, actual);
     }
@@ -103,7 +111,7 @@ class Solution2011Test {
         String[] operations = new String[0];
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2011.finalValueAfterOperations(operations));
+                () -> solution.finalValueAfterOperations(operations));
 
         String expectedMessage = "expected 'operations' to have 1 <= size <= 100 but got " + operations.length;
         String actualMessage = exception.getMessage();
@@ -120,7 +128,7 @@ class Solution2011Test {
         Arrays.fill(operations, operation);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2011.finalValueAfterOperations(operations));
+                () -> solution.finalValueAfterOperations(operations));
 
         String expectedMessage = "expected 'operations' to have 1 <= size <= 100 but got " + operations.length;
         String actualMessage = exception.getMessage();
@@ -134,7 +142,7 @@ class Solution2011Test {
         String[] operations = {"+X", "x+", "-x", "x-", "az"};
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2011.finalValueAfterOperations(operations));
+                () -> solution.finalValueAfterOperations(operations));
 
         String expectedMessage = "'operations' must consist of values in ['X++', 'X--', '++X', '--X'] only";
         String actualMessage = exception.getMessage();

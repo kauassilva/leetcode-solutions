@@ -16,7 +16,7 @@ Return the **minimum** number of operations to make all elements of `nums` divis
 ## My Solution
 
 ````java
-public static int minimumOperations(int[] nums) {
+public int minimumOperations(int[] nums) {
     validateMinimumOperations(nums);
 
     int operations = 0;
@@ -38,18 +38,18 @@ public static int minimumOperations(int[] nums) {
 ## Method Validation
 
 ````java
-private static void validateMinimumOperations(int[] nums) {
+private void validateMinimumOperations(int[] nums) {
     validateInputLength(nums);
     validateInputValues(nums);
 }
 
-private static void validateInputLength(int[] nums) {
+private void validateInputLength(int[] nums) {
     if (nums.length < 1 || nums.length > 50) {
         throw new IllegalArgumentException("expected 'nums' to have 1 <= size <= 50 but got " + nums.length);
     }
 }
 
-private static void validateInputValues(int[] nums) {
+private void validateInputValues(int[] nums) {
     for (int num : nums) {
         if (num < 1 || num > 50) {
             throw new IllegalArgumentException("'nums' must consist of values from 1 to 50 only");

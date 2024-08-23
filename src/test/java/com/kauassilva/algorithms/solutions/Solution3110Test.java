@@ -1,19 +1,30 @@
 package com.kauassilva.algorithms.solutions;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class Solution3110Test {
 
+    private static Solution3110 solution;
+
+    @BeforeAll
+    static void beforeAll() {
+        solution = new Solution3110();
+    }
+
+
     @Test
     @DisplayName("It should return the score of the string 'hello'")
     void shouldReturnScoreForHelloString() {
         String s = "hello";
 
-        int output = Solution3110.scoreOfString(s);
+        int output = solution.scoreOfString(s);
         int expected = 13;
 
         assertEquals(expected, output);
@@ -24,7 +35,7 @@ class Solution3110Test {
     void shouldReturnScoreForZazString() {
         String s = "zaz";
 
-        int output = Solution3110.scoreOfString(s);
+        int output = solution.scoreOfString(s);
         int expected = 50;
 
         assertEquals(expected, output);
@@ -35,7 +46,7 @@ class Solution3110Test {
     void shouldReturnScoreForShortString() {
         String s = "jx";
 
-        int output = Solution3110.scoreOfString(s);
+        int output = solution.scoreOfString(s);
         int expected = 14;
 
         assertEquals(expected, output);
@@ -47,7 +58,7 @@ class Solution3110Test {
         String s = "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyf" +
                 "jgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqy";
 
-        int output = Solution3110.scoreOfString(s);
+        int output = solution.scoreOfString(s);
         int expected = 811;
 
         assertEquals(expected, output);
@@ -58,7 +69,7 @@ class Solution3110Test {
     void shouldThrowExceptionForShortString() {
         String s = "x";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution3110.scoreOfString(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.scoreOfString(s));
 
         String expectedMessage = "Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".";
         String actualMessage = exception.getMessage();
@@ -72,7 +83,7 @@ class Solution3110Test {
         String s = "bqjxwzvqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyf" +
                 "jgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyfjgkxqyr";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution3110.scoreOfString(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.scoreOfString(s));
 
         String expectedMessage = "Expected 's' to have 2 <= size >= 100 but got " + s.length() + ".";
         String actualMessage = exception.getMessage();
@@ -84,7 +95,7 @@ class Solution3110Test {
     void shouldThrowExceptionForUppercaseCharacters() {
         String s = "azA";
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution3110.scoreOfString(s));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.scoreOfString(s));
 
         String expectedMessage = "'s' must consist of values from a to z only";
         String actualMessage = exception.getMessage();

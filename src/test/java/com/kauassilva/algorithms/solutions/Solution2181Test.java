@@ -1,12 +1,20 @@
 package com.kauassilva.algorithms.solutions;
 
 import com.kauassilva.nodes.ListNode;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class Solution2181Test {
+
+    private static Solution2181 solution;
+
+    @BeforeAll
+    static void beforeAll() {
+        solution = new Solution2181();
+    }
 
     @Test
     @DisplayName("It should handle the head for the example 1")
@@ -16,7 +24,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
         ListNode expected = ListNode.createListNode(expectedListNodeValues);
 
-        ListNode actual = Solution2181.mergeNodes(head);
+        ListNode actual = solution.mergeNodes(head);
 
         while (expected.getNext() != null) {
             assertEquals(expected.getVal(), actual.getVal());
@@ -37,7 +45,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
         ListNode expected = ListNode.createListNode(expectedListNodeValues);
 
-        ListNode actual = Solution2181.mergeNodes(head);
+        ListNode actual = solution.mergeNodes(head);
 
         while (expected.getNext() != null) {
             assertEquals(expected.getVal(), actual.getVal());
@@ -58,7 +66,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
         ListNode expected = ListNode.createListNode(expectedListNodeValues);
 
-        ListNode actual = Solution2181.mergeNodes(head);
+        ListNode actual = solution.mergeNodes(head);
 
         assertEquals(expected.getVal(), actual.getVal());
         assertNull(actual.getNext());
@@ -84,7 +92,7 @@ class Solution2181Test {
         }
 
         ListNode expected = ListNode.createListNode(expectedListNodeValues);
-        ListNode actual = Solution2181.mergeNodes(head);
+        ListNode actual = solution.mergeNodes(head);
 
         while (expected.getNext() != null) {
             assertEquals(expected.getVal(), actual.getVal());
@@ -105,7 +113,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
         ListNode expected = ListNode.createListNode(expectedListNodeValues);
 
-        ListNode actual = Solution2181.mergeNodes(head);
+        ListNode actual = solution.mergeNodes(head);
 
         assertEquals(expected.getVal(), actual.getVal());
         assertNull(actual.getNext());
@@ -118,7 +126,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2181.mergeNodes(head));
+                () -> solution.mergeNodes(head));
 
         String expectedMessage = "expected 'head' to have 3 <= size <= 200000 but got 2";
         String actualMessage = exception.getMessage();
@@ -138,7 +146,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2181.mergeNodes(head));
+                () -> solution.mergeNodes(head));
 
         String expectedMessage = "expected 'head' to have 3 <= size <= 200000 but got 200001";
         String actualMessage = exception.getMessage();
@@ -153,7 +161,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2181.mergeNodes(head));
+                () -> solution.mergeNodes(head));
 
         String expectedMessage = "'head' must consist of values from 0 to 1000 only";
         String actualMessage = exception.getMessage();
@@ -168,7 +176,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2181.mergeNodes(head));
+                () -> solution.mergeNodes(head));
 
         String expectedMessage = "'head' must consist of values from 0 to 1000 only";
         String actualMessage = exception.getMessage();
@@ -183,7 +191,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2181.mergeNodes(head));
+                () -> solution.mergeNodes(head));
 
         String expectedMessage = "No consecutive 0s";
         String actualMessage = exception.getMessage();
@@ -198,7 +206,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2181.mergeNodes(head));
+                () -> solution.mergeNodes(head));
 
         String expectedMessage = "First node should be 0";
         String actualMessage = exception.getMessage();
@@ -213,7 +221,7 @@ class Solution2181Test {
         ListNode head = ListNode.createListNode(headListNodeValues);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2181.mergeNodes(head));
+                () -> solution.mergeNodes(head));
 
         String expectedMessage = "Last node should be 0";
         String actualMessage = exception.getMessage();

@@ -2,7 +2,7 @@ package com.kauassilva.algorithms.solutions;
 
 public class Solution2469 {
 
-    public static double[] convertTemperature(double celsius) {
+    public double[] convertTemperature(double celsius) {
         validateConvertTemperature(celsius);
 
         double kelvin = celsius + 273.15;
@@ -11,7 +11,7 @@ public class Solution2469 {
         return new double[] {kelvin, fahrenheit};
     }
 
-    private static void validateConvertTemperature(double celsius) {
+    private void validateConvertTemperature(double celsius) {
         if (celsius < 0 || celsius > 1000) {
             throw new IllegalArgumentException("expected 'celsius' to have value from 0 to 1000 only");
         }

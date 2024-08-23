@@ -1,5 +1,6 @@
 package com.kauassilva.algorithms.solutions;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,13 +8,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Solution2469Test {
 
+    private static Solution2469 solution;
+
+    @BeforeAll
+    static void beforeAll() {
+        solution = new Solution2469();
+    }
+
     @Test
     @DisplayName("It should return correct values for the example 1")
     void shouldReturnTheArrayForExample1() {
         double celsius = 36.50;
         double[] expected = {309.65000, 97.70000};
 
-        double[] actual = Solution2469.convertTemperature(celsius);
+        double[] actual = solution.convertTemperature(celsius);
 
         assertArrayEquals(expected, actual, 1e-5);
     }
@@ -24,7 +32,7 @@ class Solution2469Test {
         double celsius = 122.11;
         double[] expected = {395.26000, 251.79800};
 
-        double[] actual = Solution2469.convertTemperature(celsius);
+        double[] actual = solution.convertTemperature(celsius);
 
         assertArrayEquals(expected, actual, 1e-5);
     }
@@ -35,7 +43,7 @@ class Solution2469Test {
         double celsius = 0;
         double[] expected = {273.15000, 32.00000};
 
-        double[] actual = Solution2469.convertTemperature(celsius);
+        double[] actual = solution.convertTemperature(celsius);
 
         assertArrayEquals(expected, actual, 1e-5);
     }
@@ -46,7 +54,7 @@ class Solution2469Test {
         double celsius = 1000;
         double[] expected = {1273.15000, 1832.00000};
 
-        double[] actual = Solution2469.convertTemperature(celsius);
+        double[] actual = solution.convertTemperature(celsius);
 
         assertArrayEquals(expected, actual, 1e-5);
     }
@@ -57,7 +65,7 @@ class Solution2469Test {
         double celsius = -0.00001;
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2469.convertTemperature(celsius));
+                () -> solution.convertTemperature(celsius));
 
         String expectedMessage = "expected 'celsius' to have value from 0 to 1000 only";
         String actualMessage = exception.getMessage();
@@ -71,7 +79,7 @@ class Solution2469Test {
         double celsius = 1000.00001;
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Solution2469.convertTemperature(celsius));
+                () -> solution.convertTemperature(celsius));
 
         String expectedMessage = "expected 'celsius' to have value from 0 to 1000 only";
         String actualMessage = exception.getMessage();

@@ -1,5 +1,6 @@
 package com.kauassilva.algorithms.solutions;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,13 +8,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Solution1929Test {
 
+    private static Solution1929 solution;
+
+    @BeforeAll
+    static void beforeAll() {
+        solution = new Solution1929();
+    }
+
     @Test
     @DisplayName("It should return the concatenation for the example 1")
     void shouldReturnConcatenationForExample1() {
         int[] nums = {1, 2, 1};
         int[] expected = {1, 2, 1, 1, 2, 1};
 
-        int[] output = Solution1929.getConcatenation(nums);
+        int[] output = solution.getConcatenation(nums);
 
         assertArrayEquals(expected, output);
     }
@@ -24,7 +32,7 @@ class Solution1929Test {
         int[] nums = {1, 3, 2, 1};
         int[] expected = {1, 3, 2, 1, 1, 3, 2, 1};
 
-        int[] output = Solution1929.getConcatenation(nums);
+        int[] output = solution.getConcatenation(nums);
 
         assertArrayEquals(expected, output);
     }
@@ -35,7 +43,7 @@ class Solution1929Test {
         int[] nums = {1};
         int[] expected = {1, 1};
 
-        int[] output = Solution1929.getConcatenation(nums);
+        int[] output = solution.getConcatenation(nums);
 
         assertArrayEquals(expected, output);
     }
@@ -53,7 +61,7 @@ class Solution1929Test {
             expected[i+maximumSize] = i+1;
         }
 
-        int[] output = Solution1929.getConcatenation(nums);
+        int[] output = solution.getConcatenation(nums);
 
         assertArrayEquals(expected, output);
     }
@@ -63,7 +71,7 @@ class Solution1929Test {
     void shouldThrowExceptionForNumsSizeLessThan1() {
         int[] nums = new int[0];
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution1929.getConcatenation(nums));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
 
         String expectedMessage = "expected 'nums' to have 1 <= size <= 1000 but got" + nums.length;
         String actualMessage = exception.getMessage();
@@ -76,7 +84,7 @@ class Solution1929Test {
     void shouldThrowExceptionForNumsSizeGreaterThan1000() {
         int[] nums = new int[1001];
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution1929.getConcatenation(nums));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
 
         String expectedMessage = "expected 'nums' to have 1 <= size <= 1000 but got" + nums.length;
         String actualMessage = exception.getMessage();
@@ -89,7 +97,7 @@ class Solution1929Test {
     void shouldThrowExceptionForNumsValueLessThan1() {
         int[] nums = {0};
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution1929.getConcatenation(nums));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
 
         String expectedMessage = "'nums' must consist of values from 1 to 1000 only";
         String actualMessage = exception.getMessage();
@@ -102,7 +110,7 @@ class Solution1929Test {
     void shouldThrowExceptionForNumsValueGreaterThan1000() {
         int[] nums = {1001};
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> Solution1929.getConcatenation(nums));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
 
         String expectedMessage = "'nums' must consist of values from 1 to 1000 only";
         String actualMessage = exception.getMessage();

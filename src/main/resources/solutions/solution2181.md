@@ -23,7 +23,7 @@ for my project, I've chosen to encapsulate the attributes of the `ListNode` clas
 For further details, see [Public or private attributes for Node classes?](../notes/notes.md)
 
 ````java
-public static ListNode mergeNodes(ListNode head) {
+public ListNode mergeNodes(ListNode head) {
     validateMergeNodes(head);
     ListNode result = new ListNode(0);
     ListNode current = result;
@@ -53,7 +53,7 @@ public static ListNode mergeNodes(ListNode head) {
 ## Method Validation
 
 ````java
-private static void validateMergeNodes(ListNode head) {
+private void validateMergeNodes(ListNode head) {
     validateHeadLength(head);
     validateNodeValues(head);
     validateConsecutiveZeros(head);
@@ -61,7 +61,7 @@ private static void validateMergeNodes(ListNode head) {
     validateLastNode(head);
 }
 
-private static void validateHeadLength(ListNode head) {
+private void validateHeadLength(ListNode head) {
     int count = 0;
     ListNode current = head;
 
@@ -75,7 +75,7 @@ private static void validateHeadLength(ListNode head) {
     }
 }
 
-private static void validateNodeValues(ListNode head) {
+private void validateNodeValues(ListNode head) {
     ListNode current = head;
 
     while (current != null) {
@@ -87,7 +87,7 @@ private static void validateNodeValues(ListNode head) {
     }
 }
 
-private static void validateConsecutiveZeros(ListNode head) {
+private void validateConsecutiveZeros(ListNode head) {
     int count = 0;
     ListNode current = head;
 
@@ -106,13 +106,13 @@ private static void validateConsecutiveZeros(ListNode head) {
     }
 }
 
-private static void validateFirstNode(ListNode head) {
+private void validateFirstNode(ListNode head) {
     if (head.getVal() != 0) { // head.val
         throw new IllegalArgumentException("First node should be 0");
     }
 }
 
-private static void validateLastNode(ListNode head) {
+private void validateLastNode(ListNode head) {
     ListNode last = head;
     while (last != null) {
         if (last.getNext() == null && last.getVal() != 0) { // last.next && last.val
