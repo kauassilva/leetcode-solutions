@@ -56,13 +56,15 @@ How to run the tests:
 mvn test -Dtest=Solution2469Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution2469Test.java))
+#### Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution2469Test.java))
 
-| Nº | Description                                                                         |
-|----|-------------------------------------------------------------------------------------|
-| 1  | It should return correct values for the example 1                                   |
-| 2  | It should return correct values for the example 2                                   |
-| 3  | It should return correct values for the minimum input value (0)                     |
-| 4  | It should return correct values for the maximum input value (1000)                  |
-| 5  | It should throw IllegalArgumentException for a input below the minimum (-0.00001)   |
-| 6  | It should throw IllegalArgumentException for a input above the maximum (1000.00001) |
+- **It should return the array correctly for**
+  - 1 : 36.50
+  - 2 : 122.11
+  - 3 : the minimum input value (0)
+  - 4 : the maximum input value (1000)
+
+
+- **It should throw IllegalArgumentException when**
+  - 1 : input value is less than allowed (-0.00001)
+  - 2 : input value is greater than allowed (1000.00001)
