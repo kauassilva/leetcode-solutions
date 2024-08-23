@@ -65,14 +65,16 @@ How to run the tests:
 mvn test -Dtest=Solution3110Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution3110Test.java))
+#### Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution3110Test.java))
 
-| Nº | Description                                                                                           |
-|----|-------------------------------------------------------------------------------------------------------|
-| 1  | It should return the score of the string 'hello'                                                      |
-| 2  | It should return the score of the string 'zaz'                                                        |
-| 3  | It should return the score of the string with 2 characters                                            |
-| 4  | It should return the score of the string with 100 characters                                          |
-| 5  | It should throw an IllegalArgumentException when the length of the string is less than 2 characters   |
-| 6  | It should throw IllegalArgumentException when the length of the string is greater than 100 characters |
-| 7  | It should throw an IllegalArgumentException when the string contains an uppercase character           |
+- **It should return the score of the string correctly**
+  - 1 : helloo
+  - 2 : zaz
+  - 3 : with 2 characters
+  - 4 : with 100 characters
+
+
+- **It should throw IllegalArgumentException when**
+  - 1 : the length of the string is less than 2 characters (1)
+  - 2 : the length of the string is greater than 100 characters (101)
+  - 3 : the string contains an uppercase character
