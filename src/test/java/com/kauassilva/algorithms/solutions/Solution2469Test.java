@@ -24,14 +24,14 @@ class Solution2469Test {
     @DisplayName("It should return the array correctly for")
     @ParameterizedTest(name = "{index} : {0}")
     @MethodSource("testDataForCorrectReturns")
-    void shouldReturnTheArrayForExample1(double celsius, double[] expectedArray) {
+    void shouldReturnTheArrayCorrectly(double celsius, double[] expectedArray) {
         assertArrayEquals(expectedArray, solution.convertTemperature(celsius), 1e-5);
     }
 
     @DisplayName("It should throw IllegalArgumentException when")
     @ParameterizedTest(name = "{index} : {0}")
     @MethodSource("testDataForExceptions")
-    void shouldThrowExceptionForInputBelowMinimum(double celsius, String expectedMessage) {
+    void shouldThrowException(double celsius, String expectedMessage) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> solution.convertTemperature(celsius));
 

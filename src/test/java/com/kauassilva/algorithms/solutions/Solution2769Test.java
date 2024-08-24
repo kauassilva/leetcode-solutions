@@ -25,14 +25,14 @@ class Solution2769Test {
     @DisplayName("It should return the maximum achievable number for")
     @ParameterizedTest(name = "{index} : {0}")
     @MethodSource("testDataForCorrectReturns")
-    void shouldReturnTheMaximumAchievableNumberForExample1(int num, int t, int expectedInteger) {
+    void shouldReturnMaximumAchievableNumberCorrectly(int num, int t, int expectedInteger) {
         assertEquals(expectedInteger, solution.theMaximumAchievableX(num, t));
     }
 
     @DisplayName("It should throw IllegalArgumentException when")
     @ParameterizedTest(name = "{index} : {0}")
     @MethodSource("testDataForExceptions")
-    void shouldThrowExceptionForNumLessThan1(int num, int t, String expectedMessage) {
+    void shouldThrowException(int num, int t, String expectedMessage) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> solution.theMaximumAchievableX(num, t));
 

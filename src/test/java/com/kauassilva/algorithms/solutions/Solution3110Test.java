@@ -25,14 +25,14 @@ class Solution3110Test {
     @DisplayName("It should return the score of the string correctly")
     @ParameterizedTest(name = "{index} : {0}")
     @MethodSource("testDataForCorrectReturns")
-    void shouldReturnScoreForHelloString(String s, int expectedInteger) {
+    void shouldReturnScoreCorrectly(String s, int expectedInteger) {
         assertEquals(expectedInteger, solution.scoreOfString(s));
     }
 
     @DisplayName("It should throw IllegalArgumentException when")
     @ParameterizedTest(name = "{index} : {0}")
     @MethodSource("testDataForExceptions")
-    void shouldThrowExceptionForShortString(String s, String expectedMessage) {
+    void shouldThrowException(String s, String expectedMessage) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> solution.scoreOfString(s));
 

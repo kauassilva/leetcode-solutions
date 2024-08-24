@@ -26,14 +26,14 @@ class Solution3190Test {
     @DisplayName("It should return the minimum number of operations correctly")
     @ParameterizedTest(name = "{index} : for {0}")
     @MethodSource("testDataForCorrectReturns")
-    void shouldReturnTheMinimumNumberOfOperationsForExample1(int[] nums, int expectedInteger) {
+    void shouldReturnMinimumNumberOfOperationsCorrectly(int[] nums, int expectedInteger) {
         assertEquals(expectedInteger, solution.minimumOperations(nums));
     }
 
     @DisplayName("It should throw IllegalArgumentException when")
     @ParameterizedTest(name = "{index} : the array {0}")
     @MethodSource("testDataForExceptions")
-    void shouldThrowExceptionForArrayLengthLessThanAllowed(int[] nums, String expectedMessage) {
+    void shouldThrowException(int[] nums, String expectedMessage) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> solution.minimumOperations(nums));
 
