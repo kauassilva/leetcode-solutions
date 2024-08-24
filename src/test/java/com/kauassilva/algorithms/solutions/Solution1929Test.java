@@ -2,9 +2,15 @@ package com.kauassilva.algorithms.solutions;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Named.named;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class Solution1929Test {
 
@@ -15,107 +21,52 @@ class Solution1929Test {
         solution = new Solution1929();
     }
 
-    @Test
-    @DisplayName("It should return the concatenation for the example 1")
-    void shouldReturnConcatenationForExample1() {
-        int[] nums = {1, 2, 1};
-        int[] expected = {1, 2, 1, 1, 2, 1};
-
-        int[] output = solution.getConcatenation(nums);
-
-        assertArrayEquals(expected, output);
+    @DisplayName("It should return the concatenation correctly for")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForCorrectReturns")
+    void shouldReturnConcatenationCorrectly(int[] nums, int[] expectedArray) {
+        assertArrayEquals(expectedArray, solution.getConcatenation(nums));
     }
 
-    @Test
-    @DisplayName("It should return the concatenation for the example 2")
-    void shouldReturnConcatenationForExample2() {
-        int[] nums = {1, 3, 2, 1};
-        int[] expected = {1, 3, 2, 1, 1, 3, 2, 1};
+    @DisplayName("It should throw IllegalArgumentException when")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForExceptions")
+    void shouldThrowException(int[] nums, String expectedMessage) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> solution.getConcatenation(nums));
 
-        int[] output = solution.getConcatenation(nums);
-
-        assertArrayEquals(expected, output);
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
-    @Test
-    @DisplayName("It should return the concatenation to the minimum allowed size of 'nums'")
-    void shouldReturnConcatenationToTheMinimumAllowedSize() {
-        int[] nums = {1};
-        int[] expected = {1, 1};
+    public static Stream<Arguments> testDataForCorrectReturns() {
+        int[] maxNums = new int[1000];
+        int[] maxExpectedArray = new int[maxNums.length * 2];
 
-        int[] output = solution.getConcatenation(nums);
-
-        assertArrayEquals(expected, output);
-    }
-
-    @Test
-    @DisplayName("It should return the concatenation to the maximum allowed size of 'nums'")
-    void shouldReturnConcatenationToTheMaximumAllowedSize() {
-        int maximumSize = 1000;
-        int[] nums = new int[maximumSize];
-        int[] expected = new int[maximumSize*2];
-
-        for (int i=0; i<maximumSize; i++) {
-            nums[i] = i+1;
-            expected[i] = i+1;
-            expected[i+maximumSize] = i+1;
+        for (int i=0; i<maxNums.length; i++) {
+            maxNums[i] = i+1;
+            maxExpectedArray[i] = i+1;
+            maxExpectedArray[i+maxNums.length] = i+1;
         }
 
-        int[] output = solution.getConcatenation(nums);
-
-        assertArrayEquals(expected, output);
+        return Stream.of(
+                arguments(new int[] {1, 2, 1}, new int[] {1, 2, 1, 1, 2, 1}),
+                arguments(new int[] {1, 3, 2, 1}, new int[] {1, 3, 2, 1, 1, 3, 2, 1}),
+                arguments(named("the minimum size allowed", new int[] {1}), new int[] {1, 1}),
+                arguments(named("the maximum size allowed", maxNums), maxExpectedArray)
+        );
     }
 
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the allowed size of 'nums' is less than 1")
-    void shouldThrowExceptionForNumsSizeLessThan1() {
-        int[] nums = new int[0];
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
-
-        String expectedMessage = "expected 'nums' to have 1 <= size <= 1000 but got" + nums.length;
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the allowed size of 'nums' is greater than 1")
-    void shouldThrowExceptionForNumsSizeGreaterThan1000() {
-        int[] nums = new int[1001];
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
-
-        String expectedMessage = "expected 'nums' to have 1 <= size <= 1000 but got" + nums.length;
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the value of 'nums' is less than 1")
-    void shouldThrowExceptionForNumsValueLessThan1() {
-        int[] nums = {0};
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
-
-        String expectedMessage = "'nums' must consist of values from 1 to 1000 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the value of 'nums' is greater than 1000")
-    void shouldThrowExceptionForNumsValueGreaterThan1000() {
-        int[] nums = {1001};
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.getConcatenation(nums));
-
-        String expectedMessage = "'nums' must consist of values from 1 to 1000 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+    public static Stream<Arguments> testDataForExceptions() {
+        return Stream.of(
+                arguments(named("the size is less than allowed (0)", new int[0]),
+                        "expected 'nums' to have 1 <= size <= 1000 but got 0"),
+                arguments(named("the size is greater than allowed (1001)", new int[1001]),
+                        "expected 'nums' to have 1 <= size <= 1000 but got 1001"),
+                arguments(named("the value is less than allowed (0)", new int[] {0}),
+                        "'nums' must consist of values from 1 to 1000 only"),
+                arguments(named("the value is greater than allowed (1001)", new int[] {1001}),
+                        "'nums' must consist of values from 1 to 1000 only")
+        );
     }
 
 }
