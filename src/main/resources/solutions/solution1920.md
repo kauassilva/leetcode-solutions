@@ -1,8 +1,10 @@
 # 1920. Build Array from Permutation
 
-Given a **zero-based permutation** `nums` **(0-indexed)**, build an array `ans` of the **same length** where `ans[i] = nums[nums[i]]` for each `0 <= i < nums.length` and return it.
+Given a **zero-based permutation** `nums` **(0-indexed)**, build an array `ans` of the **same length**
+where `ans[i] = nums[nums[i]]` for each `0 <= i < nums.length` and return it.
 
-A **zero-based permutation** `nums` is an array of **distinct** integers from `0` to `nums.length - 1` **(inclusive)**.
+A **zero-based permutation** `nums` is an array of **distinct** integers from `0` to `nums.length - 1`
+**(inclusive)**.
 
 **Constraints:**
 - `1 <= nums.length <= 1000`
@@ -86,18 +88,19 @@ How to run the tests:
 mvn test -Dtest=Solution1920Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution1920Test.java))
+#### Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution1920Test.java))
 
-| Nº | Description                                                                                                    |
-|----|----------------------------------------------------------------------------------------------------------------|
-| 1  | It should return the array for the example 1                                                                   |
-| 2  | It should return the array for the example 2                                                                   |
-| 3  | It should return the same array when the input array contains only one element                                 |
-| 4  | It should handle large input array                                                                             |
-| 5  | It should throw an IllegalArgumentException when the input array is null                                       |
-| 6  | It should throw an IllegalArgumentException when the array length is zero                                      |
-| 7  | It should throw an IllegalArgumentException when the array length is greater than 1000                         |
-| 8  | It should throw an IllegalArgumentException when the input array contains negative numbers                     |
-| 9  | It should throw an IllegalArgumentException where the maximum value is greater than the array length minus one |
-| 10 | It should throw an IllegalArgumentException when the input array contains duplicate values                     |
+- **It should return the array correctly for**
+  - 1 : [0, 2, 1, 5, 3, 4]
+  - 2 : [5, 0, 1, 2, 3, 4]
+  - 3 : the array containing only one element
+  - 4 : a large input array
 
+    
+- **It should throw IllegalArgumentException when**
+  - 1 : the array is null
+  - 2 : the array length is zero
+  - 3 : the array length is greater than 1000
+  - 4 : the array contains negative numbers
+  - 5 : the maximum array value is greater than the length minus one
+  - 6 : the input array contains duplicate values
