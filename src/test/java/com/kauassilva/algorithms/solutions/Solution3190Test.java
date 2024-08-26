@@ -2,10 +2,17 @@ package com.kauassilva.algorithms.solutions;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Named.named;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class Solution3190Test {
 
@@ -16,110 +23,46 @@ class Solution3190Test {
         solution = new Solution3190();
     }
 
-    @Test
-    @DisplayName("It should return the minimum number of operations for example 1")
-    void shouldReturnTheMinimumNumberOfOperationsForExample1() {
-        int[] nums = {1, 2, 3, 4};
-        int expected = 3;
-
-        int actual = solution.minimumOperations(nums);
-
-        assertEquals(expected, actual);
+    @DisplayName("It should return the minimum number of operations correctly")
+    @ParameterizedTest(name = "{index} : for {0}")
+    @MethodSource("testDataForCorrectReturns")
+    void shouldReturnMinimumNumberOfOperationsCorrectly(int[] nums, int expectedInteger) {
+        assertEquals(expectedInteger, solution.minimumOperations(nums));
     }
 
-    @Test
-    @DisplayName("It should return the minimum number of operations for example 2")
-    void shouldReturnTheMinimumNumberOfOperationsForExample2() {
-        int[] nums = {3, 6, 9};
-        int expected = 0;
-
-        int actual = solution.minimumOperations(nums);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("It should return the minimum number of operations for the minimum array length and value allowed")
-    void shouldReturnTheMinimumNumberForTheMinimumCaseAllowed() {
-        int[] nums = {1};
-        int expected = 1;
-
-        int actual = solution.minimumOperations(nums);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("It should return the minimum number of operations for the maximum array length and values allowed")
-    void shouldReturnTheMinimumNumberForTheMaximumCaseAllowed() {
-        int maximumLength = 50;
-        int[] nums = new int[maximumLength];
-
-        for (int i = 0; i < maximumLength; i++) {
-            nums[i] = i+1;
-        }
-
-        int expected = 34;
-
-        int actual = solution.minimumOperations(nums);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the input array length is less than allowed")
-    void shouldThrowExceptionForArrayLengthLessThanAllowed() {
-        int[] nums = {};
-
+    @DisplayName("It should throw IllegalArgumentException when")
+    @ParameterizedTest(name = "{index} : the array {0}")
+    @MethodSource("testDataForExceptions")
+    void shouldThrowException(int[] nums, String expectedMessage) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> solution.minimumOperations(nums));
 
-        String expectedMessage = "expected 'nums' to have 1 <= size <= 50 but got 0";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the input array length is greater than allowed")
-    void shouldThrowExceptionForArrayLengthGreaterThanAllowed() {
-        int[] nums = new int[51];
+    public static Stream<Arguments> testDataForCorrectReturns() {
+        int[] nums = new int[50];
+        Arrays.fill(nums, 50);
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> solution.minimumOperations(nums));
-
-        String expectedMessage = "expected 'nums' to have 1 <= size <= 50 but got 51";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+        return Stream.of(
+                arguments(new int[] {1, 2, 3, 4}, 3),
+                arguments(new int[] {3, 6, 9}, 0),
+                arguments(named("the minimum array length and value allowed (1)", new int[] {1}), 1),
+                arguments(named("the maximum array length and value allowed (50)", nums), 50)
+        );
     }
 
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the array value is less than allowed")
-    void shouldThrowExceptionForArrayValueLessThanAllowed() {
-        int[] nums = {0};
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> solution.minimumOperations(nums));
-
-        String expectedMessage = "'nums' must consist of values from 1 to 50 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the array value is greater than allowed")
-    void shouldThrowExceptionForArrayValueGreaterThanAllowed() {
-        int[] nums = {51};
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> solution.minimumOperations(nums));
-
-        String expectedMessage = "'nums' must consist of values from 1 to 50 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+    public static Stream<Arguments> testDataForExceptions() {
+        return Stream.of(
+                arguments(named("length is less than allowed (0)", new int[0]),
+                        "expected 'nums' to have 1 <= size <= 50 but got 0"),
+                arguments(named("length is greater than allowed (51)", new int[51]),
+                        "expected 'nums' to have 1 <= size <= 50 but got 51"),
+                arguments(named("value is less than allowed (0)", new int[] {0}),
+                        "'nums' must consist of values from 1 to 50 only"),
+                arguments(named("value is greater than allowed (51)", new int[] {51}),
+                        "'nums' must consist of values from 1 to 50 only")
+        );
     }
 
 }

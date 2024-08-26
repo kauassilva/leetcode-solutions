@@ -70,15 +70,17 @@ How to run the tests:
 mvn test -Dtest=Solution2011Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution2011Test.java))
+#### Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution2011Test.java))
 
-| Nº | Description                                                                                            |
-|----|--------------------------------------------------------------------------------------------------------|
-| 1  | It should return the correct value for the example 1                                                   |
-| 2  | It should return the correct value for the example 2                                                   |
-| 3  | It should return the correct value for the example 3                                                   |
-| 4  | It should return the correct value when the operations array contains only one operation               |
-| 5  | It should return the correct value when the operations array contains the maximum length allowed (100) |
-| 6  | It should throw an IllegalArgumentException when there are no operations                               |
-| 7  | It should throw an IllegalArgumentException when the input length is above the maximum                 |
-| 8  | It should throw an IllegalArgumentException when the input value is different than allowed             |
+- **It should return the final value of `X` correctly for**
+  - 1 : "--X", "X++", "X++"
+  - 2 : "++X", "++X", "X++"
+  - 3 : "X++", "++X", "--X", "X--"
+  - 4 : the operations array with only one operation
+  - 5 : the operations array with the maximum length allowed (100)
+
+
+- **It should throw IllegalArgumentException when**
+  - 1 : there are no operations
+  - 2 : the input length is above the maximum
+  - 3 : the input value is different from allowed

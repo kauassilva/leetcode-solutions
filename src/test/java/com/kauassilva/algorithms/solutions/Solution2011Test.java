@@ -2,42 +2,18 @@ package com.kauassilva.algorithms.solutions;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Named.named;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-/**
- * <p>
- * There is a programming language with only <b>four</b> operations and <b>one
- * </b> variable {@code X}:
- * <ul>
- *     <li>{@code ++X} and {@code X++} <b>increments</b> the value of the
- *     variable {@code X} by {@code 1}.</li>
- *     <li>{@code --X} and {@code X--} <b>decrements</b> the value of the
- *     variable {@code X} by {@code 1}.</li>
- * </ul>
- *
- * <p>
- * Initially, the value of {@code X} is {@code 0}.
- *
- * <p>
- * Given an array of strings {@code operations} containing a list of
- * operations, return <i>the <b>final</b> value of</i> {@code X} <i>after
- * performing all the operations</i>.
- *
- * <p>
- * <b>Constraints:</b>
- * <ul>
- *     <li>{@code 1 <= operations.length <= 100}</li>
- *     <li>{@code operations[i]} will be either {@code "++X"}, {@code "X++"},
- *     {@code "--X"}, or {@code "X--"}</li>
- * </ul>
- *
- * @see <a href="https://leetcode.com/problems/final-value-of-variable-after-performing-operations/description/">
- *     2011. Final Value of Variable After Performing Operations</a>
- */
 class Solution2011Test {
 
     private static Solution2011 solution;
@@ -47,107 +23,48 @@ class Solution2011Test {
         solution = new Solution2011();
     }
 
-    @Test
-    @DisplayName("It should return the correct value for the example 1")
-    void shouldReturnTheCorrectValueForExample1() {
-        String[] operations = {"--X", "X++", "X++"};
-        int expected = 1;
-
-        int actual = solution.finalValueAfterOperations(operations);
-
-        assertEquals(expected, actual);
+    @DisplayName("It should return the final value of `X` correctly for")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForCorrectReturns")
+    void shouldReturnFinalValueOfXCorrectly(String[] operations, int expectedInteger) {
+        assertEquals(expectedInteger, solution.finalValueAfterOperations(operations));
     }
 
-    @Test
-    @DisplayName("It should return the correct value for the example 2")
-    void shouldReturnTheCorrectValueForExample2() {
-        String[] operations = {"++X", "++X", "X++"};
-        int expected = 3;
+    public static Stream<Arguments> testDataForCorrectReturns() {
+        String[] maxOperations = new String[100];
+        Arrays.fill(maxOperations, "X++");
 
-        int actual = solution.finalValueAfterOperations(operations);
-
-        assertEquals(expected, actual);
+        return Stream.of(
+                arguments(named("\"--X\", \"X++\", \"X++\"", new String[] {"--X", "X++", "X++"}), 1),
+                arguments(named("\"++X\", \"++X\", \"X++\"", new String[] {"++X", "++X", "X++"}), 3),
+                arguments(named("\"X++\", \"++X\", \"--X\", \"X--\"", new String[] {"X++", "++X", "--X", "X--"}), 0),
+                arguments(named("the operations array with only one operation", new String[] {"++X"}), 1),
+                arguments(named("the operations array with the maximum length allowed (100)", maxOperations), 100)
+        );
     }
 
-    @Test
-    @DisplayName("It should return the correct value for the example 3")
-    void shouldReturnTheCorrectValueForExample3() {
-        String[] operations = {"X++", "++X", "--X", "X--"};
-        int expected = 0;
-
-        int actual = solution.finalValueAfterOperations(operations);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("It should return the correct value when the operations array contains only one operation")
-    void shouldReturnTheCorrectValueWhenOperationsArrayContainsOnlyOneOperation() {
-        String[] operations = {"++X"};
-        int expected = 1;
-
-        int actual = solution.finalValueAfterOperations(operations);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("It should return the correct value when the operations array contains the maximum length allowed (100)")
-    void shouldReturnTheCorrectValueWhenOperationsArrayContainsMaximumLength() {
-        String operation = "X++";
-        String[] operations = new String[100];
-        int expected = 100;
-
-        Arrays.fill(operations, operation);
-
-        int actual = solution.finalValueAfterOperations(operations);
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when there are no operations")
-    void shouldThrowExceptionWhenInputThereAreNoOperations() {
-        String[] operations = new String[0];
-
+    @DisplayName("It should throw IllegalArgumentException when")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForExceptions")
+    void shouldThrowExceptionWhenInputThereAreNoOperations(String[] operations, String expectedMessage) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> solution.finalValueAfterOperations(operations));
 
-        String expectedMessage = "expected 'operations' to have 1 <= size <= 100 but got " + operations.length;
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the input length is above the maximum")
-    void shouldThrowExceptionWhenInputLengthIsAboveMaximum() {
-        String operation = "X++";
-        String[] operations = new String[101];
+    public static Stream<Arguments> testDataForExceptions() {
+        String[] maxOperations = new String[101];
+        Arrays.fill(maxOperations, "X++");
 
-        Arrays.fill(operations, operation);
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> solution.finalValueAfterOperations(operations));
-
-        String expectedMessage = "expected 'operations' to have 1 <= size <= 100 but got " + operations.length;
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw an IllegalArgumentException when the input value is different than allowed")
-    void shouldThrowExceptionWhenInputValueIsDifferentThanAllowed() {
-        String[] operations = {"+X", "x+", "-x", "x-", "az"};
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> solution.finalValueAfterOperations(operations));
-
-        String expectedMessage = "'operations' must consist of values in ['X++', 'X--', '++X', '--X'] only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+        return Stream.of(
+                arguments(named("there are no operations", new String[] {}),
+                        "expected 'operations' to have 1 <= size <= 100 but got 0"),
+                arguments(named("the input length is above the maximum", maxOperations),
+                        "expected 'operations' to have 1 <= size <= 100 but got 101"),
+                arguments(named("the input value is different from allowed", new String[] {"+X", "x+", "-x", "x-", "az"}),
+                        "'operations' must consist of values in ['X++', 'X--', '++X', '--X'] only")
+        );
     }
 
 }

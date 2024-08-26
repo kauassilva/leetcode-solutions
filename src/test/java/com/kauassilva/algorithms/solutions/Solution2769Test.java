@@ -2,10 +2,16 @@ package com.kauassilva.algorithms.solutions;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Named.named;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class Solution2769Test {
 
@@ -16,96 +22,43 @@ class Solution2769Test {
         solution = new Solution2769();
     }
 
-    @Test
-    @DisplayName("It should return the maximum achievable number for 'num=4' and 't=1'")
-    void shouldReturnTheMaximumAchievableNumberForExample1() {
-        int num = 4;
-        int t = 1;
-
-        assertEquals(6, solution.theMaximumAchievableX(num, t));
+    @DisplayName("It should return the maximum achievable number for")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForCorrectReturns")
+    void shouldReturnMaximumAchievableNumberCorrectly(int num, int t, int expectedInteger) {
+        assertEquals(expectedInteger, solution.theMaximumAchievableX(num, t));
     }
 
-    @Test
-    @DisplayName("It should return the maximum achievable number for 'num=3' and 't=2'")
-    void shouldReturnTheMaximumAchievableNumberForExample2() {
-        int num = 3;
-        int t = 2;
+    @DisplayName("It should throw IllegalArgumentException when")
+    @ParameterizedTest(name = "{index} : {0}")
+    @MethodSource("testDataForExceptions")
+    void shouldThrowException(int num, int t, String expectedMessage) {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> solution.theMaximumAchievableX(num, t));
 
-        assertEquals(7, solution.theMaximumAchievableX(num, t));
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
-    @Test
-    @DisplayName("It should return the maximum achievable number to the minimum allowed values")
-    void shouldReturnTheMaximumAchievableNumberToTheMinimumAllowed() {
-        int num = 1;
-        int t = 1;
-
-        assertEquals(3, solution.theMaximumAchievableX(num, t));
+    public static Stream<Arguments> testDataForCorrectReturns() {
+        return Stream.of(
+                arguments(named("num = 4 and t = 1", 4), 1, 6),
+                arguments(named("num = 3 and t = 2", 3), 2, 7),
+                arguments(named("the minimum values allowed", 1), 1, 3),
+                arguments(named("the maximum values allowed", 50), 50, 150)
+        );
     }
 
-    @Test
-    @DisplayName("It should return the maximum achievable number to the maximum allowed values")
-    void shouldReturnTheMaximumAchievableNumberToTheMaximumAllowed() {
-        int num = 50;
-        int t = 50;
-
-        assertEquals(150, solution.theMaximumAchievableX(num, t));
-    }
-
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the 'num' is less than 1")
-    void shouldThrowExceptionForNumLessThan1() {
-        int num = 0;
-        int t = 1;
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.theMaximumAchievableX(num, t));
-
-        String expectedMessage = "expected 'num' to have value from 1 to 50 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the 'num' is greater than 50")
-    void shouldThrowExceptionForNumGreaterThan50() {
-        int num = 51;
-        int t = 1;
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.theMaximumAchievableX(num, t));
-
-        String expectedMessage = "expected 'num' to have value from 1 to 50 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the 't' is less than 1")
-    void shouldThrowExceptionForTLessThan1() {
-        int num = 1;
-        int t = 0;
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.theMaximumAchievableX(num, t));
-
-        String expectedMessage = "expected 't' to have value from 1 to 50 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    @DisplayName("It should throw IllegalArgumentException when the 't' is greater than 50")
-    void shouldThrowExceptionForTGreaterThan50() {
-        int num = 1;
-        int t = 51;
-
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> solution.theMaximumAchievableX(num, t));
-
-        String expectedMessage = "expected 't' to have value from 1 to 50 only";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
+    public static Stream<Arguments> testDataForExceptions() {
+        return Stream.of(
+                arguments(named("the 'num' is less than 1 (0)", 0), 1,
+                        "expected 'num' to have value from 1 to 50 only"),
+                arguments(named("the 'num' is greater than 50 (51)", 51), 1,
+                        "expected 'num' to have value from 1 to 50 only"),
+                arguments(named("the 't' is less than 1 (0)", 1), 0,
+                        "expected 't' to have value from 1 to 50 only"),
+                arguments(named("the 't' is greater than 50 (51)", 1), 0,
+                        "expected 't' to have value from 1 to 50 only")
+        );
     }
 
 }

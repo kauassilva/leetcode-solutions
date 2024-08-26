@@ -135,19 +135,21 @@ How to run the tests:
 mvn test -Dtest=Solution2181Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution2181Test.java))
+#### Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution2181Test.java))
 
-| Nº | Description                                                                                  |
-|----|----------------------------------------------------------------------------------------------|
-| 1  | It should handle the head for the example 1                                                  |
-| 2  | It should handle the head for the example 2                                                  |
-| 3  | It should handle a linked list with a single non-zero node between two zeros                 |
-| 4  | It should handle a linked list with the maximum node length allowed                          |
-| 5  | It should handle a linked list with the maximum node value allowed                           |
-| 6  | It should handle a linked list with a node length less than allowed                          |
-| 7  | It should handle a linked list with a node length greater than allowed                       |
-| 8  | It should handle a linked list with a node value less than the minimum node value allowed    |
-| 9  | It should handle a linked list with a node value greater than the minimum node value allowed |
-| 10 | It should handle a linked list with consecutive zeros                                        |
-| 11 | It should handle a linked list with a non-zero node at the beginning                         |
-| 12 | It should handle a linked list with a non-zero node at the end                               |
+- **It should return the head correctly for**
+  - 1 : the LeetCode example 1
+  - 2 : the LeetCode example 2
+  - 3 : a linked list with a single non-zero node between two zeros
+  - 4 : a linked list with the maximum node length allowed
+  - 5 : a linked list with the maximum node value allowed
+
+
+- **It should throw IllegalArgumentException when**
+  - 1 : a linked list with a node length is less than allowed
+  - 2 : a linked list with a node length is greater than allowed
+  - 3 : a linked list with a node value is less than the minimum node value allowed
+  - 4 : a linked list with a node value is greater than the minimum node value allowed
+  - 5 : a linked list has consecutive zeros
+  - 6 : a linked list has a non-zero node at the beginning
+  - 7 : a linked list has a non-zero node at the end

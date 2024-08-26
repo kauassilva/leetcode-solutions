@@ -41,7 +41,7 @@ private void validateGetConcatenation(int[] nums) {
 
 private void validateInputLength(int[] nums) {
     if (nums.length < 1 || nums.length > 1000) {
-        throw new IllegalArgumentException("expected 'nums' to have 1 <= size <= 1000 but got" + nums.length);
+        throw new IllegalArgumentException("expected 'nums' to have 1 <= size <= 1000 but got " + nums.length);
     }
 }
 
@@ -66,15 +66,17 @@ How to run the tests:
 mvn test -Dtest=Solution1929Test
 ````
 
-Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution1929Test.java))
+#### Test cases ([Link to the document](../../../test/java/com/kauassilva/algorithms/solutions/Solution1929Test.java))
 
-| Nº | Description                                                                                   |
-|----|-----------------------------------------------------------------------------------------------|
-| 1  | It should return the concatenation for the example 1                                          |
-| 2  | It should return the concatenation for the example 2                                          |
-| 3  | It should return the concatenation to the minimum allowed size of 'nums'                      |
-| 4  | It should return the concatenation to the maximum allowed size of 'nums'                      |
-| 5  | It should throw an IllegalArgumentException when the allowed size of 'nums' is less than 1    |
-| 6  | It should throw an IllegalArgumentException when the allowed size of 'nums' is greater than 1 |
-| 7  | It should throw an IllegalArgumentException when the value of 'nums' is less than 1           |
-| 8  | It should throw an IllegalArgumentException when the value of 'nums' is greater than 1000     |
+- **It should return the concatenation for**
+  - 1 : [1, 2, 1]
+  - 2 : [1, 3, 2, 1]
+  - 3 : the minimum size allowed
+  - 4 : the maximum size allowed
+
+
+- **It should throw IllegalArgumentException when**
+  - 1 : the size is less than allowed (0)
+  - 2 : the size is greater than allowed (1001)
+  - 3 : the value is less than allowed (0)
+  - 4 : the value is greater than allowed (1001)

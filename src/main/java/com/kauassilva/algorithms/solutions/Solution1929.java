@@ -19,7 +19,7 @@ public class Solution1929 {
 
     private void validateInputLength(int[] nums) {
         if (nums.length < 1 || nums.length > 1000) {
-            throw new IllegalArgumentException("expected 'nums' to have 1 <= size <= 1000 but got" + nums.length);
+            throw new IllegalArgumentException("expected 'nums' to have 1 <= size <= 1000 but got " + nums.length);
         }
     }
 
