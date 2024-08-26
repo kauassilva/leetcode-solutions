@@ -13,7 +13,8 @@ incorrect...
 ## Topics covered
 
 1. Public or private attributes for Node classes?
-2. Why I used `Logger` instead of `System.out`
+2. Why am I using `@ParameterizedTest` instead of `@Test`
+3. Why I used `Logger` instead of `System.out`
 
 
 ### 1 - Public or private attributes for Node classes?
@@ -111,7 +112,16 @@ public class Solution2181 {
 ````
 
 
-### 2 - Why I used `Logger` instead of `System.out`
+### 2 - Why am I using `@ParameterizedTest` instead of `@Test`
+
+Parameterized tests allow a test to run multiple times with different
+arguments. This is useful for testing code behaviour under various conditions.
+
+The use of `@ParameterizedTest` avoids code duplication. It also enhances code
+maintainability and readability by separating the test logic from the data.
+
+
+### 3 - Why I used `Logger` instead of `System.out`
 
 `System.out` is sufficient for simple applications. On the other hand, `Logger`
 is more suitable for complex applications, specially in production
